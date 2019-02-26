@@ -17,6 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^streaming_platform/', include('streaming_platform.urls')),
+    url(r'^$', include('streaming_platform.urls')),
     url(r'^admin/', admin.site.urls),
 ]
