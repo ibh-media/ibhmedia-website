@@ -20,6 +20,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+
   <!-- Static css styles -->
   <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
@@ -27,46 +31,50 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Carousel</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <span class="nav-link" href="#">Trending:</span>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0" action="/">
+        <div class="social-icons">
+          <a href="https://www.facebook.com/ibhtv"><i class="fab fa-facebook-square fa-2x"></i></a>
+          <a href="https://twitter.com/"><i class="fab fa-twitter-square fa-2x"></i></a>
+          <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+          <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
+        </div>
+        <form class="form-inline mt-2 mt-md-0" action="/" method="GET">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
       </div>
     </nav>
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-          <img src="{% static 'img/logo.png' %}" height="60" class="d-inline-block align-top" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="about">About</a>
-              </li>
-          </ul>
-      </div>
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/logo.png' %}" height="60" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href=""><b>TV</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""><b>MOVIES</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""><b>VIDEOS ON DEMAND</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""><b>PODCASTS</b></a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <main role="main">
@@ -132,7 +140,7 @@
     <!-- FOOTER -->
     <footer class="container">
       <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p>&copy; 2019 iBH Media &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 
   </main>
