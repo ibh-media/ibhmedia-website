@@ -8,5 +8,14 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-def about(request):
-    return render(request, 'about.html')
+def tv(request):
+    return render(request, 'tv.html')
+
+def movies(request):
+    return render(request, 'movies.html')
+
+def videos(request):
+    return render(request, 'videos.html')
+
+def podcasts(request):
+    return render(request, 'podcasts.html')
