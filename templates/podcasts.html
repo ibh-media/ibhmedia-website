@@ -60,7 +60,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto menu-text">
         <li class="nav-item">
           <a class="nav-link" href="/tv"><b>TV</b></a>
         </li>
@@ -79,12 +79,12 @@
 
   <main role="main">
     <div class="container">
-      <div>
+      <div class="results">
         <div class="podcasts">
           {% if podcasts %}
-            <h1>ALL PODCASTS</h1>
+            <h1>ALL PODCASTS</h1><br>
             {% for podcast in podcasts %}
-              <div class="podcast">
+              <div class="podcast result-elem">
                 <h2><a href="{{ podcast.url }}">{{ podcast.title }}</a></h2>
                 <h5>Production Company: </h5>
                 <p>{{ podcast.company }}</p>

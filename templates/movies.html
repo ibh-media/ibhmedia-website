@@ -60,7 +60,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto menu-text">
         <li class="nav-item">
           <a class="nav-link" href="/tv"><b>TV</b></a>
         </li>
@@ -79,12 +79,12 @@
 
   <main role="main">
     <div class="container">
-      <div>
+      <div class="results">
         <div class="movies">
           {% if movies %}
-            <h1>ALL MOVIES</h1>
+            <h1>ALL MOVIES</h1><br>
             {% for movie in movies %}
-              <div class="movie">
+              <div class="movie result-elem">
                 <h2><a href="{{ movie.url }}">{{ movie.title }}</a></h2>
                 <h5>Duration: </h5><p>{{ movie.duration }}</p>
                 <h5>Release Date: </h5><p>{{ movie.release_date }}</p>

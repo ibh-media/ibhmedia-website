@@ -60,7 +60,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto menu-text">
         <li class="nav-item">
           <a class="nav-link" href="#"><b>TV</b></a>
         </li>
@@ -79,12 +79,12 @@
 
   <main role="main">
     <div class="container">
-      <div>
+      <div class="results">
         <div class="tv_channels">
           {% if tv_channels %}
-            <h1>ALL TV CHANNELS</h1>
+            <h1>ALL TV CHANNELS</h1><br>
             {% for tv_channel in tv_channels %}
-              <div class="tv_channel">
+              <div class="tv_channel result-elem">
                 <h2><a href="{{ tv_channel.url }}">{{ tv_channel.name }}</a></h2>
                 <h5>Program: </h5>
                 <p>{{ tv_channel.program }}</p>
