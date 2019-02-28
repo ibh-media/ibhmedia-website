@@ -5,8 +5,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Import models
-from .models import Movie
 from .models import TV_channel
+from .models import Movie
+from .models import Video
 
 # Create your views here.
 def index(request):
@@ -17,11 +18,12 @@ def tv(request):
     return render(request, 'tv.html', {'tv_channels': tv_channels})
 
 def movies(request):
-    movies = Movie.objects.all().order_by('year') # order by any variable in Movie class from models 
+    movies = Movie.objects.all().order_by('release_date') # order by any variable in Movie class from models 
     return render(request, 'movies.html', {'movies': movies})
 
 def videos(request):
-    return render(request, 'videos.html')
+    videos = Video.objects.all().order_by('release_date') # order by any variable in Movie class from models 
+    return render(request, 'videos.html', {'videos': videos})
 
 def podcasts(request):
     return render(request, 'podcasts.html')

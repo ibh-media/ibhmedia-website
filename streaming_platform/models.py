@@ -23,7 +23,19 @@ class TV_channel(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=200)
     duration = models.CharField(max_length=8)
-    year = models.DateField(auto_now=False, auto_now_add=False)
+    release_date = models.DateField(auto_now=False, auto_now_add=False)
+    url = models.URLField(max_length=200)
+    slug = models.SlugField(default='not_found')
+    # add thumbnail
+
+    def __str__(self):
+        return self.title
+
+class Video(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    duration = models.CharField(max_length=8)
+    release_date = models.DateField(auto_now=False, auto_now_add=False)
     url = models.URLField(max_length=200)
     slug = models.SlugField(default='not_found')
     # add thumbnail
