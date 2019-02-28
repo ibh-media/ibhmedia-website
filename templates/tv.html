@@ -80,9 +80,24 @@
   <main role="main">
     <div class="container">
       <div>
-        <h1>TEST - TV</h1>
+        <h1>ALL TV CHANNELS</h1>
+        <div class="tv_channels">
+          {% for tv_channel in tv_channels %}
+            <div class="tv_channel">
+              <h2><a href="{{ tv_channel.url }}">{{ tv_channel.name }}</a></h2>
+              <h5>Program: </h5>
+              <p>{{ tv_channel.program }}</p>
+              {% if tv_channel.live == True %} 
+                <h5>Live Now</h5>
+              {% else %}
+                <h5>Not Live</h5>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">

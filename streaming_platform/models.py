@@ -10,6 +10,16 @@ Every time you change/create a model:
     - python manage.py migrate
 '''
 
+class TV_channel(models.Model):
+    name = models.CharField(max_length=200)
+    program = models.CharField(max_length=200)
+    live = models.BooleanField()
+    url = models.URLField(max_length=200, default='not_found')
+    
+    # shows name of channel in admin view
+    def __str__(self):
+        return self.name
+
 class Movie(models.Model):
     title = models.CharField(max_length=200)
     duration = models.CharField(max_length=8)
