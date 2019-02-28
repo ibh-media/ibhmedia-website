@@ -8,6 +8,7 @@ from django.shortcuts import render
 from .models import TV_channel
 from .models import Movie
 from .models import Video
+from .models import Podcast
 
 # Create your views here.
 def index(request):
@@ -18,12 +19,13 @@ def tv(request):
     return render(request, 'tv.html', {'tv_channels': tv_channels})
 
 def movies(request):
-    movies = Movie.objects.all().order_by('release_date') # order by any variable in Movie class from models 
+    movies = Movie.objects.all().order_by('release_date') 
     return render(request, 'movies.html', {'movies': movies})
 
 def videos(request):
-    videos = Video.objects.all().order_by('release_date') # order by any variable in Movie class from models 
+    videos = Video.objects.all().order_by('release_date')
     return render(request, 'videos.html', {'videos': videos})
 
 def podcasts(request):
-    return render(request, 'podcasts.html')
+    podcasts = Podcast.objects.all().order_by('release_date') 
+    return render(request, 'podcasts.html', {'podcasts': podcasts})

@@ -80,16 +80,20 @@
   <main role="main">
     <div class="container">
       <div>
-        <h1>ALL VIDEOS</h1>
         <div class="videos">
-          {% for video in videos %}
-            <div class="video">
-              <h2><a href="{{ video.url }}">{{ video.title }}</a></h2>
-              <h5>Author: </h5><p>{{ video.author}}</p>
-              <h5>Duration: </h5><p>{{ video.duration }}</p>
-              <h5>Release Date: </h5><p>{{ video.release_date }}</p>
-            </div>
-          {% endfor %}
+          {% if videos %}
+            <h1>ALL VIDEOS</h1>
+            {% for video in videos %}
+              <div class="video">
+                <h2><a href="{{ video.url }}">{{ video.title }}</a></h2>
+                <h5>Author: </h5><p>{{ video.author}}</p>
+                <h5>Duration: </h5><p>{{ video.duration }}</p>
+                <h5>Release Date: </h5><p>{{ video.release_date }}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+            <h1>No Videos Found</h1>
+          {% endif %}
         </div>
       </div>
     </div>
