@@ -1,154 +1,30 @@
+{% extends 'base.html' %}
+
 {% load static from staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>iBH Media - TV</title>
-
-  <!-- Bootstrap core CSS/JS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-    crossorigin="anonymous">
-
-  <!-- Static css styles -->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <span class="nav-link" href="#">Trending:</span>
-          </li>
-        </ul>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/ibhtv"><i class="fab fa-facebook-square fa-2x"></i></a>
-          <a href="https://twitter.com/"><i class="fab fa-twitter-square fa-2x"></i></a>
-          <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
-          <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
-        </div>
-        <form class="form-inline mt-2 mt-md-0" action="/" method="GET">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary btn-orange my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-        </form>
+{% block title %}Podcasts{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="results">
+    <div class="tv_channels">
+      {% if tv_channels %}
+      <h1>ALL TV CHANNELS</h1><br>
+      {% for tv_channel in tv_channels %}
+      <div class="tv_channel result-elem">
+        <h2><a href="{{ tv_channel.url }}">{{ tv_channel.name }}</a></h2>
+        <h5>Program: </h5>
+        <p>{{ tv_channel.program }}</p>
+        {% if tv_channel.live == True %}
+        <h5>Live Now</h5>
+        {% else %}
+        <h5>Not Live</h5>
+        {% endif %}
       </div>
-    </nav>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <a href="/"><img src="{% static 'img/logo.png' %}" height="60" class="d-inline-block align-top" alt=""></a>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-      <ul class="navbar-nav ml-auto menu-text">
-        <li class="nav-item">
-          <a class="nav-link" href="#"><b>TV</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/movies"><b>MOVIES</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/videos"><b>VIDEOS ON DEMAND</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/podcasts"><b>PODCASTS</b></a>
-        </li>
-      </ul>
+      {% endfor %}
+      {% else %}
+      <h1>No TV Channels found</h1>
+      {% endif %}
     </div>
-  </nav>
-
-  <main role="main">
-    <div class="container">
-      <div class="results">
-        <div class="tv_channels">
-          {% if tv_channels %}
-            <h1>ALL TV CHANNELS</h1><br>
-            {% for tv_channel in tv_channels %}
-              <div class="tv_channel result-elem">
-                <h2><a href="{{ tv_channel.url }}">{{ tv_channel.name }}</a></h2>
-                <h5>Program: </h5>
-                <p>{{ tv_channel.program }}</p>
-                {% if tv_channel.live == True %} 
-                  <h5>Live Now</h5>
-                {% else %}
-                  <h5>Not Live</h5>
-                {% endif %}
-              </div>
-            {% endfor %}
-          {% else %}
-            <h1>No TV Channels found</h1>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-3 col-md-3">
-            <h5><b><u>FEAUTURE FILMS</u></b></h5><br>
-            <ul class="list-unstyled quick-links">
-              <li><a href="/advertising"></i>Advertising</a></li>
-              <li><a href="/privacy"></i>Privacy</a></li>
-              <li><a href="/tos"></i>Terms of Service</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-3 col-md-3">
-            <h5><b><u>SUPPORT CENTER</u></b></h5><br>
-            <ul class="list-unstyled quick-links">
-              <li><a href="/contentsubs"></i>Content Submission</a></li>
-              <li><a href="/faq"></i>Faq</a></li>
-              <li><a href="/tutorials"></i>Tutorials</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-3 col-md-3">
-            <h5><b><u>LEGAL INFO</u></b></h5><br>
-            <ul class="list-unstyled quick-links">
-              <li><a href="/advertising"></i>Advertising</a></li>
-              <li><a href="/privacy"></i>Privacy</a></li>
-              <li><a href="/tos"></i>Terms of Service</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-3 col-md-3s">
-            <h5><b><u>OUR SPONSORS</u></b></h5><br>
-            <ul class="list-unstyled quick-links">
-              <li><a href="/advertising"></i>Advertising</a></li>
-              <li><a href="/privacy"></i>Privacy</a></li>
-              <li><a href="/tos"></i>Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div class="container">
-      <div class="copyright">
-        <p>&copy; 2019 iBH Media &middot; <a href="/privacy">Privacy</a> &middot; <a href="/tos">Terms</a></p>
-      </div>
-    </div>
-
-  </main>
-</body>
-
-</html>
+  </div>
+</div>
+{% endblock %}

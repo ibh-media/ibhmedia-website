@@ -19,8 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('streaming_platform.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^tv/', include('streaming_platform.urls')),
-    url(r'^movies/', include('streaming_platform.urls')),
-    url(r'^videos/', include('streaming_platform.urls')),
-    url(r'^podcasts/', include('streaming_platform.urls')),
+    url(r'^accounts/', include('accounts.urls')),
 ]

@@ -23,6 +23,11 @@ body {
   border-color: rgb(255, 123, 0) !important;
 }
 
+.signup-btn,
+.login-btn {
+  padding-right: 15px;
+}
+
 .menu-text {
   font-size: 24px;
 }
