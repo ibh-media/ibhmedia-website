@@ -135,24 +135,28 @@ body {
   margin-left: .75rem;
 }
 
-/* SIGN UP FORM
+/* SIGN UP AND LOG IN FORMS
   --------------------------------------------------------------- */
-.signup-form {
+.signup-form,
+.login-form {
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.signup-form label {
+.signup-form label,
+.login-form label {
   font-size: 22px;
 }
 
 #id_username,
+#id_password,
 #id_password1,
 #id_password2 {
   border-radius: 5px;
 }
 
-.signup-form input[type="submit"] {
+.signup-form input[type="submit"],
+.login-form input[type="submit"] {
   padding: 10px 100px 10px 100px;
   font-weight: bold;
 }

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from django.shortcuts import render, redirect
 
@@ -17,4 +17,11 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        form = AuthenticationForm(data = request.POST)
+        if form.is_valid():
+            #log in user
+            return redirect('movies')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
