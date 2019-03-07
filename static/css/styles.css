@@ -24,7 +24,8 @@ body {
 }
 
 .signup-btn,
-.login-btn {
+.login-btn,
+.logout-btn {
   padding-right: 15px;
 }
 
