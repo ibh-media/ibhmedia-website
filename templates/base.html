@@ -44,6 +44,9 @@
                     <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
                 </div>
                 {% if user.is_authenticated %}
+                    <div class="user-greetings">
+                        <a class="btn btn-primary my-2 my-sm-0" href="/accounts/profile"><b>Profile</b></a>
+                    </div>
                     <div class="logout-btn">
                         <a class="btn btn-primary btn-orange my-2 my-sm-0" href="/accounts/logout/"><b>Log Out</b></a>
                     </div>

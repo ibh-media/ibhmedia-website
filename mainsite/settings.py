@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'streaming_platform',
+    'accounts',
 
     'allauth',
     'allauth.account',

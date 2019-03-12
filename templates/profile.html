@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load account %}
 
-{% block head_title %}{% trans "Profile" %}{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 <div class="container profile-page">
-  <h1>{% user_display user %}</h1>
+  <h1>Your Profile</h1><br>
+  <h4>Email:</h4><p>{{ user.email }}</p>
+  <h4>Username:</h4><p>{{ user.email }}</p>
+  <h4>First Name:</h4><p>{{ user.email }}</p>
+  <h4>Last Name:</h4><p>{{ user.email }}</p>
+  <h4>Birthdate:</h4><p>{{ user.birthdate }}</p>
+  <h4>Plan:</h4><p>{{ user.plan }}</p>
 </div>
 {% endblock %}
