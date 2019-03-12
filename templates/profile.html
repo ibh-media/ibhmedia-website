@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Profile" %}{% endblock %}
+
+{% block content %}
+<div class="container profile-page">
+  <h1>{% user_display user %}</h1>
+</div>
+{% endblock %}
