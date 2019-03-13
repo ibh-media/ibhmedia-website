@@ -7,12 +7,38 @@
 {% block content %}
 <div class="container profile-page">
   <h1>Your Profile</h1><br>
-  <h4>Email:</h4><p>{{ user.email }}</p>
-  <h4>Username:</h4><p>{{ user.username }}</p>
-  <h4>First Name:</h4><p>{{ user.first_name }}</p>
-  <h4>Last Name:</h4><p>{{ user.last_name }}</p>
-  <h4>Gender:</h4><p>{{ user.profile.gender }}</p>
-  <h4>Birthdate:</h4><p>{{ user.profile.birthdate }}</p>
-  <h4>Plan:</h4><p>{{ user.profile.plan }}</p><a href="">Update</a>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td scope="row">Email</td>
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Username</td>
+        <td>{{ user.username }}</td>
+      </tr>
+      <tr>
+        <td scope="row">First Name</td>
+        <td>{{ user.first_name }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Last Name</td>
+        <td>{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Gender</td>
+        <td>{{ user.gender }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Birtddate</td>
+        <td>{{ user.birtddate }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Plan</td>
+        <td>{{ user.plan }}</td>
+      </tr>
+
+    </tbody>
+  </table>
 </div>
 {% endblock %}
