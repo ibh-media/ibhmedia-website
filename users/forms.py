@@ -22,10 +22,20 @@ class SignupForm(forms.ModelForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
 
+        profile, created = Profile.objects.get_or_create(
+            user=user, defaults={
+                'gender': self.cleaned_data['gender'],
+                'birthdate': self.cleaned_data['birthdate'],
+                'plan': self.cleaned_data['plan'],
+            })
+        if created: # This prevents saving if profile already exist
+            profile.save()
+        '''
         # Save your profile
         profile = Profile()
-        profile.user_id = user.id
+        profile.user = user
         profile.gender = self.cleaned_data['gender']
         profile.birthdate = self.cleaned_data['birthdate']
         profile.plan = self.cleaned_data['plan']
         profile.save()
+        '''
