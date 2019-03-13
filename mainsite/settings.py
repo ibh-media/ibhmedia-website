@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'streaming_platform',
-    'accounts',
+    'users',
 
     'allauth',
     'allauth.account',
@@ -51,6 +51,8 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

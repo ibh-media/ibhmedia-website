@@ -8,10 +8,11 @@
 <div class="container profile-page">
   <h1>Your Profile</h1><br>
   <h4>Email:</h4><p>{{ user.email }}</p>
-  <h4>Username:</h4><p>{{ user.email }}</p>
-  <h4>First Name:</h4><p>{{ user.email }}</p>
-  <h4>Last Name:</h4><p>{{ user.email }}</p>
-  <h4>Birthdate:</h4><p>{{ user.birthdate }}</p>
-  <h4>Plan:</h4><p>{{ user.plan }}</p>
+  <h4>Username:</h4><p>{{ user.username }}</p>
+  <h4>First Name:</h4><p>{{ user.first_name }}</p>
+  <h4>Last Name:</h4><p>{{ user.last_name }}</p>
+  <h4>Gender:</h4><p>{{ user.profile.gender }}</p>
+  <h4>Birthdate:</h4><p>{{ user.profile.birthdate }}</p>
+  <h4>Plan:</h4><p>{{ user.profile.plan }}</p>
 </div>
 {% endblock %}

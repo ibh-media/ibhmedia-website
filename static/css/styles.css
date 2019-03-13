@@ -154,8 +154,15 @@ body {
   font-size: 22px;
 }
 
+#id_plan,
+#id_gender {
+  width: 205px;
+}
+
 #id_email,
 #id_username,
+#id_first_name,
+#id_last_name,
 #id_login,
 #id_password,
 #id_password1,
