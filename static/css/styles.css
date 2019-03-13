@@ -159,17 +159,6 @@ body {
   width: 205px;
 }
 
-#id_email,
-#id_username,
-#id_first_name,
-#id_last_name,
-#id_login,
-#id_password,
-#id_password1,
-#id_password2 {
-  border-radius: 5px;
-}
-
 .signup-form input[type="submit"],
 .login-form input[type="submit"] {
   padding: 10px 100px 10px 100px;

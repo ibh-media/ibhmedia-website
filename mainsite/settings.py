@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     'streaming_platform',
     'users',
+    
+    'widget_tweaks',
 
     'allauth',
     'allauth.account',
