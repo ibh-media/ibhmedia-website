@@ -13,7 +13,7 @@ class SignupForm(forms.ModelForm):
         widgets = {
             'birthdate': DateInput()
         }
-        fields = ('gender', 'birthdate','plan')
+        fields = ('gender', 'birthdate', 'plan')
 
     # A custom method required to work with django-allauth, see https://stackoverflow.com/questions/12303478/how-to-customize-user-profile-when-using-django-allauth
     def signup(self, request, user):
@@ -30,12 +30,3 @@ class SignupForm(forms.ModelForm):
             })
         if created: # This prevents saving if profile already exist
             profile.save()
-        '''
-        # Save your profile
-        profile = Profile()
-        profile.user = user
-        profile.gender = self.cleaned_data['gender']
-        profile.birthdate = self.cleaned_data['birthdate']
-        profile.plan = self.cleaned_data['plan']
-        profile.save()
-        '''

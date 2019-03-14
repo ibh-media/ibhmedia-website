@@ -12,33 +12,39 @@
       <tr>
         <td scope="row">Email</td>
         <td>{{ user.email }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">Username</td>
         <td>{{ user.username }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">First Name</td>
         <td>{{ user.first_name }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">Last Name</td>
         <td>{{ user.last_name }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">Gender</td>
         <td>{{ user.profile.gender }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">Birthdate</td>
         <td>{{ user.profile.birthdate }}</td>
+        <td></td>
       </tr>
       <tr>
         <td scope="row">Plan</td>
         <td>{{ user.profile.plan }}</td>
       </tr>
-
     </tbody>
   </table>
+  <a class="btn btn-primary" href="/accounts/profile/update">Update Profile Information</a>
 </div>
 {% endblock %}
