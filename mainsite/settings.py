@@ -89,10 +89,6 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "allauth.context_processors.allauth",
-    "allauth.account.context_processors.account"
-)
 
 WSGI_APPLICATION = 'mainsite.wsgi.application'
 
@@ -150,4 +146,5 @@ STATIC_URL = '/static/'
 # you can put multiple folders here
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    '/static/',
 )
