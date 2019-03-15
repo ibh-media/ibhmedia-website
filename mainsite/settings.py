@@ -81,16 +81,18 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
-                "allauth.context_processors.allauth",
-                "allauth.account.context_processors.account"
             ],
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "allauth.context_processors.allauth",
+    "allauth.account.context_processors.account"
+)
 
 WSGI_APPLICATION = 'mainsite.wsgi.application'
 
