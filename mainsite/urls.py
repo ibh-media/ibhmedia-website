@@ -19,7 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('streaming_platform.urls')),
     url(r'^admin/', admin.site.urls),
-    (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/', include('users.urls')),
 ]
