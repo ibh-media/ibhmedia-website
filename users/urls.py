@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.profile, name='profile'),
-    url(r'^update', views.update_profile, name='update_profile'),
+    url(r'^edit', views.edit_profile, name='edit_profile'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

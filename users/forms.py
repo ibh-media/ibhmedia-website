@@ -1,6 +1,8 @@
 from django import forms
 from .models import Profile
 
+from django.contrib.auth.forms import UserChangeForm
+
 class DateInput(forms.DateInput):
     input_type = 'date'
 
@@ -28,5 +30,16 @@ class SignupForm(forms.ModelForm):
                 'birthdate': self.cleaned_data['birthdate'],
                 'plan': self.cleaned_data['plan'],
             })
-        if created: # This prevents saving if profile already exist
+        # PLAN CHECK
+        '''
+        if profile.plan == "Pro":
+            valid_cc = False
+            if valid_cc:
+                profile.save()
+
+        elif created and profile.plan == "Free": # This prevents saving if profile already exist
+            profile.save()
+        '''
+
+        if created:
             profile.save()
