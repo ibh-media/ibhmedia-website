@@ -1,8 +1,6 @@
 from django import forms
 from .models import Profile
 
-from django.contrib.auth.forms import UserChangeForm
-
 class DateInput(forms.DateInput):
     input_type = 'date'
 
