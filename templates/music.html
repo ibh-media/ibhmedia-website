@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %}Music{% endblock %}
+{% block content %}
+<div id="bannerimage"></div>
+<div class="container">
+  <div class="results">
+    <div class="songs">
+      {% if songs %}
+      <h1>ALL MUSIC</h1><br>
+      {% for song in songs %}
+      <div class="song result-elem">
+        <h2><a href="{{ song.url }}">{{ song.title }}</a></h2>
+        <h5>Author: </h5>
+        <p>{{ song.author}}</p>
+        <h5>Duration: </h5>
+        <p>{{ song.duration }}</p>
+        <h5>Release Date: </h5>
+        <p>{{ song.release_date }}</p>
+      </div>
+      {% endfor %}
+      {% else %}
+      <h1>No Songs Found</h1>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

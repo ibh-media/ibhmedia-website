@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 # Import models
 from .models import TV_channel
 from .models import Movie
-from .models import Video
+from .models import Song
 from .models import Podcast
 
 # Create your views here.
@@ -27,9 +27,9 @@ def movies(request):
     return render(request, 'movies.html', {'movies': movies})
 
 @login_required(login_url="/accounts/login")
-def videos(request):
-    videos = Video.objects.all().order_by('release_date')
-    return render(request, 'videos.html', {'videos': videos})
+def songs(request):
+    songs = Song.objects.all().order_by('release_date')
+    return render(request, 'music.html', {'songs': songs})
 
 @login_required(login_url="/accounts/login")
 def podcasts(request):

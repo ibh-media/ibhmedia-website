@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^tv/', views.tv, name='tv'),
     url(r'^movies/', views.movies, name='movies'),
-    url(r'^videos/', views.videos, name='videos'),
+    url(r'^music/', views.songs, name='songs'),
     url(r'^podcasts/', views.podcasts, name='podcasts'),
 ]
 
