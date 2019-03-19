@@ -33,6 +33,14 @@ body {
   padding-right: 15px;
 }
 
+.user-link {
+  color: white;
+}
+
+.user-link:hover {
+  color: grey;
+}
+
 .menu-text {
   font-size: 24px;
 }

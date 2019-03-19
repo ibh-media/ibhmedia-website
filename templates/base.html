@@ -36,26 +36,20 @@
                     <span class="nav-link" href="#">Trending:</span>
                 </li>
             </ul>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/ibhtv"><i class="fab fa-facebook-square fa-2x"></i></a>
-                <a href="https://twitter.com/"><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
-            </div>
             {% if user.is_authenticated %}
-                <div class="user-greetings">
-                    <a class="btn btn-primary my-2 my-sm-0" href="/accounts/profile"><b>Profile</b></a>
-                </div>
-                <div class="logout-btn">
-                    <a class="btn btn-primary btn-orange my-2 my-sm-0" href="/accounts/logout/"><b>Log Out</b></a>
-                </div>
+            <div class="user-greetings">
+                <a class="user-link my-2 my-sm-0" href="/accounts/profile"><b>Profile</b></a>
+            </div>
+            <div class="logout-btn">
+                <a class="user-link my-2 my-sm-0" href="/accounts/logout/"><b>Log Out</b></a>
+            </div>
             {% else %}
-                <div class="signup-btn">
-                    <a class="btn btn-primary my-2 my-sm-0" href="/accounts/signup/"><b>Sign Up</b></a>
-                </div>
-                <div class="login-btn">
-                    <a class="btn btn-primary btn-orange my-2 my-sm-0" href="/accounts/login/"><b>Log In</b></a>
-                </div>
+            <div class="signup-btn">
+                <a class="user-link my-2 my-sm-0" href="/accounts/signup/"><b>Sign Up</b></a>
+            </div>
+            <div class="login-btn">
+                <a class="user-link my-2 my-sm-0" href="/accounts/login/"><b>Log In</b></a>
+            </div>
             {% endif %}
             <form class="form-inline mt-2 mt-md-0" action="/" method="GET">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -132,6 +126,12 @@
                         </ul>
                     </div>
                     <div class="copyright">
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/ibhtv"><i class="fab fa-facebook-square fa-2x"></i></a>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter-square fa-2x"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
+                        </div>
                         <p>&copy; 2019 iBH Media &middot; <a href="privacy">Privacy</a> &middot; <a href="tos">Terms</a></p>
                     </div>
                 </div>
