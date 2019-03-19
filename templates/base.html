@@ -38,17 +38,17 @@
             </ul>
             {% if user.is_authenticated %}
             <div class="user-greetings">
-                <a class="user-link my-2 my-sm-0" href="/accounts/profile"><b>Profile</b></a>
+                <a class="user-link my-2 my-sm-0" href="/accounts/profile">Profile</a>
             </div>
             <div class="logout-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/logout/"><b>Log Out</b></a>
+                <a class="user-link my-2 my-sm-0" href="/accounts/logout/">Log Out</a>
             </div>
             {% else %}
             <div class="signup-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/signup/"><b>Sign Up</b></a>
+                <a class="user-link my-2 my-sm-0" href="/accounts/signup/">Sign Up</a>
             </div>
             <div class="login-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/login/"><b>Log In</b></a>
+                <a class="user-link my-2 my-sm-0" href="/accounts/login/">Log In</a>
             </div>
             {% endif %}
             <form class="form-inline mt-2 mt-md-0" action="/" method="GET">
