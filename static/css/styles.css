@@ -184,6 +184,11 @@ body {
   font-weight: bold;
 }
 
+.tooltip-class {
+  padding-left: 10px;
+  display: inline-block;
+}
+
 /* PROFILE PAGE 
   --------------------------------------------------------------- */
 .profile-page {
