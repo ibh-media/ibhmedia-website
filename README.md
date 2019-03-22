@@ -13,4 +13,4 @@
 5. `python manage.py runserver`
 
 # Demo at:
-[demo](18.207.218.217:8000/)
+18.207.218.217:8000/
