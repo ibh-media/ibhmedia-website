@@ -3,15 +3,14 @@
 
 2. `cd ibhmedia-website`
 
-3.
 ### On Windows:
-`ibhenv\Scripts\activate`
+3. `ibhenv\Scripts\activate`
 ### On Mac/Linux:
-`source ibhenv\Scripts\activate`
+3. `source ibhenv\Scripts\activate`
 
 4. `pip install -r requirements.txt`
 
 5. `python manage.py runserver`
 
 # Demo at:
-(18.207.218.217:8000/)
+<18.207.218.217:8000/>
