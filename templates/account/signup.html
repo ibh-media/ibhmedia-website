@@ -54,7 +54,12 @@
         </div>
 
         <div class="mb-3">
-          {{ form.gender.label_tag }}<br>
+          {{ form.gender.label_tag }}
+          <div class="tooltip-class">
+            <span data-toggle="tooltip" data-placement="right"
+              title="We collect this information to provide a more personalized experience with the platform">Why?</span>
+          </div>
+          <br>
           {{ form.gender|add_class:"form-control" }}
           <p style="color: red">{{ form.gender.errors }}</p>
           {% if gender.help_text %}
@@ -65,7 +70,8 @@
         <div class="mb-3">
           {{ form.birthdate.label_tag }}
           <div class="tooltip-class">
-            <a href="#" data-toggle="tooltip" data-placement="right" title="We collect this information to provide a more personalized experience with the platform">Why?</a>
+            <span data-toggle="tooltip" data-placement="right"
+              title="We collect this information to provide a more personalized experience with the platform">Why?</span>
           </div>
           <script>
             $(document).ready(function () {
