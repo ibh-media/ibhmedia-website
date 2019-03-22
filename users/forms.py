@@ -1,5 +1,7 @@
 from django import forms
 from .models import Profile
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import  UserChangeForm
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -41,3 +43,14 @@ class SignupForm(forms.ModelForm):
 
         if created:
             profile.save()
+
+class EditUserForm(UserChangeForm):
+    
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password',
+        )

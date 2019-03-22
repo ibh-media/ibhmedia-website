@@ -3,18 +3,51 @@
 {% load i18n %}
 {% load widget_tweaks %}
 
-{% block title %}Signup{% endblock %}
+{% block title %}Edit your profile{% endblock %}
 
 {% block content %}
 <div id="bannerimage"></div>
-<div class="container signup-form">
+<div class="container login-form">
   <div class="row">
-    <div class="col-md-12 order-md-1">
-      <h1>Update Your profile Info</h1>
-      <form method="POST" action="/accounts/profile/edit" class="" >
+    <div class="col-md-12">
+      <h1>{% trans "Edit your profile information" %}</h1><br>
+      {% if form.errors %}
+      {% for error in form.non_field_errors %}
+      <p style="color: red">{{ error }}</p>
+      {% endfor %}
+      {% endif %}
+      <form class="form-signin" id="login_form" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary btn-orange" type="submit">Submit</button>
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            {{ form.email.label_tag }}<br>
+            {{ form.email|add_class:"form-control" }}
+            <p style="color: red">{{ form.email.errors }}</p>
+            {% if email.help_text %}
+            <small style="color: grey">{{ email.help_text }}</small>
+            {% endif %}
+          </div>
+          <div class="col-md-7 mb-3">
+            {{ form.first_name.label_tag }}<br>
+            {{ form.first_name|add_class:"form-control" }}
+            <p style="color: red">{{ form.first_name.errors }}</p>
+            {% if first_name.help_text %}
+            <small style="color: grey">{{ first_name.help_text }}</small>
+            {% endif %}
+          </div>
+          <div class="col-md-7 mb-3">
+            {{ form.last_name.label_tag }}<br>
+            {{ form.last_name|add_class:"form-control" }}
+            <p style="color: red">{{ form.last_name.errors }}</p>
+            {% if last_name.help_text %}
+            <small style="color: grey">{{ last_name.help_text }}</small>
+            {% endif %}
+          </div>
+        </div>
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="primaryAction btn btn-primary btn-orange" type="submit">{% trans "Submit" %}</button>
       </form>
     </div>
   </div>
