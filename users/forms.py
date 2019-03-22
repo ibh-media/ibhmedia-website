@@ -40,7 +40,6 @@ class SignupForm(forms.ModelForm):
         elif created and profile.plan == "Free": # This prevents saving if profile already exist
             profile.save()
         '''
-
         if created:
             profile.save()
 
@@ -53,4 +52,12 @@ class EditUserForm(UserChangeForm):
             'first_name',
             'last_name',
             'password',
+        )
+
+class EditProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = (
+            'plan',
         )

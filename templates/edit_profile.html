@@ -43,6 +43,14 @@
             <small style="color: grey">{{ last_name.help_text }}</small>
             {% endif %}
           </div>
+          <div class="col-md-7 mb-3">
+            {{ profile_form.plan.label_tag }}<br>
+            {{ profile_form.plan|add_class:"form-control" }}
+            <p style="color: red">{{ profile_form.plan.errors }}</p>
+            {% if plan.help_text %}
+            <small style="color: grey">{{ plan.help_text }}</small>
+            {% endif %}
+          </div>
         </div>
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
