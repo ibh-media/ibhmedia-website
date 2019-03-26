@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.http import HttpResponse
-
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 # Import models
@@ -11,6 +9,8 @@ from .models import TV_channel
 from .models import Movie
 from .models import Song
 from .models import Podcast
+
+from .forms import MusicForm
 
 # Create your views here.
 def index(request):
@@ -35,3 +35,14 @@ def songs(request):
 def podcasts(request):
     podcasts = Podcast.objects.all().order_by('release_date') 
     return render(request, 'podcasts.html', {'podcasts': podcasts})
+
+@login_required(login_url="/accounts/login")
+def music_upload(request):
+    if request.method == 'POST':
+        form = MusicForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/music')
+    else:
+        form = MusicForm()
+    return render(request, 'music_upload.html', {'form': form})

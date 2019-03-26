@@ -10,9 +10,11 @@
     <div class="songs">
       {% if songs %}
       <h1>ALL MUSIC</h1><br>
+      <a href="/music/music_upload"><button class="btn btn-primary">Upload your music</button></a>
       {% for song in songs %}
       <div class="song result-elem">
-        <h2><a href="{{ song.url }}">{{ song.title }}</a></h2>
+        <img src="{{ song.thumbnail.img.url }}">
+        <h2><a href="">{{ song.title }}</a></h2>
         <h5>Author: </h5>
         <p>{{ song.author}}</p>
         <h5>Duration: </h5>

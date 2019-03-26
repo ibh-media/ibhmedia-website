@@ -38,7 +38,7 @@ class Song(models.Model):
     release_date = models.DateField(auto_now=False, auto_now_add=False)
     url = models.URLField(max_length=200)
     slug = models.SlugField(default='not_found')
-    # add thumbnail
+    thumbnail = models.ImageField(upload_to='media/music_thumbnails', blank=False)
 
     def __str__(self):
         return self.title
