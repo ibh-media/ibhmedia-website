@@ -107,6 +107,14 @@ body {
   background-position: center;
 }
 
+/* THUMBNAIL
+  -------------------------------------------------- */
+.thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
 /* RESPONSIVE CSS
   -------------------------------------------------- */
 

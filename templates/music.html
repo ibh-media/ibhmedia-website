@@ -9,22 +9,33 @@
   <div class="results">
     <div class="songs">
       {% if songs %}
-      <h1>ALL MUSIC</h1><br>
-      <a href="/music/music_upload"><button class="btn btn-primary">Upload your music</button></a>
-      {% for song in songs %}
-      <div class="song result-elem">
-        <img src="{{ song.thumbnail.img.url }}">
-        <h2><a href="">{{ song.title }}</a></h2>
-        <h5>Author: </h5>
-        <p>{{ song.author}}</p>
-        <h5>Duration: </h5>
-        <p>{{ song.duration }}</p>
-        <h5>Release Date: </h5>
-        <p>{{ song.release_date }}</p>
+      <div>
+        <h1>ALL MUSIC</h1><br>
+        <span><a href="/music/music_upload"><button class="btn btn-primary">Upload your song</button></a></span>
+        <br><br>
       </div>
-      {% endfor %}
+      <div class="row">
+        {% for song in songs %}
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img class="thumbnail" src="{{ song.thumbnail.url }}">
+            <div class="card-body">
+              <a href="">
+                <h5 class="card-title">{{ song.title }}</h5>
+              </a>
+              <h6 class="card-subtitle mb-2 text-muted">{{ song.author }}</h6>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ song.duration }}</small>
+                <small class="text-muted">{{ song.release_date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
       {% else %}
-      <h1>No Songs Found</h1>
+      <h1>No Songs Found</h1><br>
+      <a href="/music/music_upload"><button class="btn btn-primary">Upload your song</button></a>
       {% endif %}
     </div>
   </div>
