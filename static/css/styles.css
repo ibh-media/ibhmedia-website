@@ -115,6 +115,10 @@ body {
     object-fit: cover;
 }
 
+input[type="file"] {
+  
+}
+
 /* RESPONSIVE CSS
   -------------------------------------------------- */
 

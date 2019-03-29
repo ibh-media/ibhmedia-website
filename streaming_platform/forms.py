@@ -1,7 +1,13 @@
 from django import forms
 from .models import Song
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class MusicForm(forms.ModelForm):
     class Meta:
         model = Song
-        fields = ('title', 'author', 'duration', 'release_date', 'thumbnail', )
+        widgets = {
+            'release_date': DateInput(),
+        }
+        fields = ('title', 'author', 'release_date', 'thumbnail', )
