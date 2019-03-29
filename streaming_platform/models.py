@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.text import slugify
 
 '''
 ===== IMPORTANT =====
@@ -37,11 +38,15 @@ class Song(models.Model):
     duration = models.CharField(max_length=8)
     release_date = models.DateField(auto_now=False, auto_now_add=False)
     url = models.URLField(max_length=200)
-    slug = models.SlugField(default='not_found')
+    slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='music_thumbnails', blank=False)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Song, self).save(*args, **kwargs)
 
 class Podcast(models.Model):
     title = models.CharField(max_length=200)
