@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ song.title }}{% endblock %}
+
+{% block content %}
+<div id="bannerimage"></div>
+<div class="container content-detail-page">
+    <h1>{{ song.title }}</h1>
+    <h3>{{ song.author }}</h3>
+    <p>{{ song.duration }}</p>
+    <p>{{ song.release_date }}</p>
+</div>
+{% endblock %}

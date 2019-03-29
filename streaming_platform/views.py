@@ -32,11 +32,6 @@ def songs(request):
     return render(request, 'music.html', {'songs': songs})
 
 @login_required(login_url="/accounts/login")
-def podcasts(request):
-    podcasts = Podcast.objects.all().order_by('release_date') 
-    return render(request, 'podcasts.html', {'podcasts': podcasts})
-
-@login_required(login_url="/accounts/login")
 def music_upload(request):
     if request.method == 'POST':
         form = MusicForm(request.POST, request.FILES)
@@ -46,3 +41,14 @@ def music_upload(request):
     else:
         form = MusicForm()
     return render(request, 'music_upload.html', {'form': form})
+
+@login_required(login_url="/accounts/login")
+def music_detail(request, slug):
+    song = Song.objects.get(slug=slug)
+    return render(request, 'music_detail.html', {'song': song})
+
+@login_required(login_url="/accounts/login")
+def podcasts(request):
+    podcasts = Podcast.objects.all().order_by('release_date') 
+    return render(request, 'podcasts.html', {'podcasts': podcasts})
+

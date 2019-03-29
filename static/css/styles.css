@@ -55,6 +55,16 @@ body {
   padding-bottom: 50px;
 }
 
+.upload-form {
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+
+.content-detail-page {
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
 

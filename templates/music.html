@@ -16,11 +16,13 @@
       </div>
       <div class="row">
         {% for song in songs %}
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img class="thumbnail" src="{{ song.thumbnail.url }}">
+        <div class="col-md-3">
+          <div class="card">
+            <a href="{{ song.slug }}">
+              <img class="thumbnail" src="{{ song.thumbnail.url }}">
+            </a>
             <div class="card-body">
-              <a href="">
+              <a href="{{ song.slug }}">
                 <h5 class="card-title">{{ song.title }}</h5>
               </a>
               <h6 class="card-subtitle mb-2 text-muted">{{ song.author }}</h6>
