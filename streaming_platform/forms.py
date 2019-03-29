@@ -10,4 +10,4 @@ class MusicForm(forms.ModelForm):
         widgets = {
             'release_date': DateInput(),
         }
-        fields = ('title', 'author', 'release_date', 'thumbnail', )
+        fields = ('title', 'author', 'thumbnail', )

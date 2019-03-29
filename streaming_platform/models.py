@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.text import slugify
+import datetime
 
 '''
 ===== IMPORTANT =====
@@ -36,7 +37,7 @@ class Song(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     duration = models.CharField(max_length=8)
-    release_date = models.DateField(auto_now=False, auto_now_add=False)
+    release_date = models.DateField(default=datetime.date.today)
     url = models.URLField(max_length=200)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='music_thumbnails', blank=False)

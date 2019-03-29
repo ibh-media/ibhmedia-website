@@ -7,9 +7,12 @@
 {% block content %}
 <div id="bannerimage"></div>
 <div class="container content-detail-page">
-    <h1>{{ song.title }}</h1>
-    <h3>{{ song.author }}</h3>
-    <p>{{ song.duration }}</p>
-    <p>{{ song.release_date }}</p>
+    <div class="song">
+        <h1>{{ song.title }}</h1>
+        <h4>{{ song.author }}</h4>
+        <p>{{ song.duration }}</p>
+        <p>{{ song.release_date }}</p>
+    </div>
+    <a href="/music" class="btn btn-primary">Back</a>
 </div>
 {% endblock %}
