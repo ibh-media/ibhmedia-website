@@ -41,6 +41,7 @@ class Song(models.Model):
     url = models.URLField(max_length=200)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='music_thumbnails', blank=False)
+    video_file= models.FileField(upload_to='videos/', null=True, default='not found')
 
     def __str__(self):
         return self.title

@@ -12,6 +12,10 @@
         <h4>{{ song.author }}</h4>
         <p>{{ song.duration }}</p>
         <p>{{ song.release_date }}</p>
+        <video width='400' controls>
+            <source src='{{ song.videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+        </video>
     </div>
     <a href="/music" class="btn btn-primary">Back</a>
 </div>

@@ -29,6 +29,11 @@
                         {{ form.thumbnail|add_class:"thumbnail-input" }}
                         <p style="color: red">{{ form.thumbnail.errors }}</p>
                     </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.video_file.label_tag }}<br>
+                        {{ form.video_file|add_class:"thumbnail-input" }}
+                        <p style="color: red">{{ form.video_file.errors }}</p>
+                    </div>
                 </div>
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
