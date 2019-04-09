@@ -13,7 +13,7 @@
         <p>{{ song.duration }}</p>
         <p>{{ song.release_date }}</p>
         <video width='400' controls>
-            <source src='{{ song.videofile }}' type='video/mp4'>
+            <source src="../../media/{{song.video_file}}" type="video/mp4"></source>
             Your browser does not support the video tag.
         </video>
     </div>
