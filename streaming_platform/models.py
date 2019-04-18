@@ -27,8 +27,9 @@ class Movie(models.Model):
     duration = models.CharField(max_length=8)
     release_date = models.DateField(auto_now=False, auto_now_add=False)
     url = models.URLField(max_length=200)
-    slug = models.SlugField(default='not_found')
-    # add thumbnail
+    slug = models.SlugField(unique=True)
+    thumbnail = models.ImageField(upload_to='movie_thumbnails', default='not found', blank=False)
+    video_file= models.FileField(upload_to='movies/', default='not found', blank=True)
 
     def __str__(self):
         return self.title
