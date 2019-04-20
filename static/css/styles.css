@@ -77,16 +77,24 @@ body {
   margin-bottom: 4rem;
 }
 
+.carousel-item {
+  height: 12rem;
+}
+
 /* Since positioning the image, we need to help out the caption */
-.carousel-caption {
+.carousel-caption-home {
   top: 5rem;
   bottom: 5rem;
   z-index: 10;
 }
 
 /* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 32rem;
+.carousel-item-home {
+  height: 32rem !important;
+}
+
+.carousel-item-movie {
+  width: 350px;
 }
 
 .carousel-item>img {
@@ -98,8 +106,15 @@ body {
 }
 
 .carousel-caption {
-  background: #000000;
+  background: #2979ff;
+  top: 20px;
+  bottom: 20px;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption-movie {
+  text-align: left;
+  padding-left: 10px;
 }
 
 .btn-carousel-position {
