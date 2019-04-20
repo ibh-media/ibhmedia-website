@@ -24,8 +24,9 @@ class TV_channel(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=200)
+    director = models.CharField(max_length=100, default='not found')
     duration = models.CharField(max_length=8)
-    release_date = models.DateField(auto_now=False, auto_now_add=False)
+    release_date = models.DateField(default=datetime.date.today)
     url = models.URLField(max_length=200)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='movie_thumbnails', default='not found', blank=False)
@@ -33,6 +34,10 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Movie, self).save(*args, **kwargs)
 
 class Song(models.Model):
     title = models.CharField(max_length=200)

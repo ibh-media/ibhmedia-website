@@ -9,18 +9,37 @@
   <div class="results">
     <div class="movies">
       {% if movies %}
-      <h1>ALL MOVIES</h1><br>
-      {% for movie in movies %}
-      <div class="movie result-elem">
-        <h2><a href="{{ movie.url }}">{{ movie.title }}</a></h2>
-        <h5>Duration: </h5>
-        <p>{{ movie.duration }}</p>
-        <h5>Release Date: </h5>
-        <p>{{ movie.release_date }}</p>
+      <div>
+        <h1>ALL MOVIES</h1><br>
+        {% if request.user.is_superuser %}
+        <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span>
+        {% endif %}
+        <br><br>
       </div>
-      {% endfor %}
+      <div class="row">
+        {% for movie in movies %}
+        <div class="col-md-3">
+          <div class="card">
+            <a href="{{ movie.slug }}">
+              <img class="thumbnail" src="{{ movie.thumbnail.url }}">
+            </a>
+            <div class="card-body">
+              <a href="{{ movie.slug }}">
+                <h5 class="card-title">{{ movie.title }}</h5>
+              </a>
+              <h6 class="card-subtitle mb-2 text-muted">{{ movie.director }}</h6>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ movie.duration }}</small>
+                <small class="text-muted">{{ movie.release_date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
       {% else %}
-      <h1>No Movies Found</h1>
+      <h1>No movies Found</h1><br>
+      <a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a>
       {% endif %}
     </div>
   </div>

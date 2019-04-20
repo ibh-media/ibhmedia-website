@@ -1,0 +1,48 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block title %}Upload a movie{% endblock %}
+
+{% block content %}
+<div id="bannerimage"></div>
+<div class="container upload-form">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{% trans "Upload a movie" %}</h1><br>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-7 mb-3">
+                        {{ form.title.label_tag }}<br>
+                        {{ form.title|add_class:"form-control" }}
+                        <p style="color: red">{{ form.title.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.director.label_tag }}<br>
+                        {{ form.director|add_class:"form-control" }}
+                        <p style="color: red">{{ form.director.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.thumbnail.label_tag }}<br>
+                        {{ form.thumbnail|add_class:"thumbnail-input" }}
+                        <p style="color: red">{{ form.thumbnail.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.video_file.label_tag }}<br>
+                        {{ form.video_file|add_class:"thumbnail-input" }}
+                        <p style="color: red">{{ form.video_file.errors }}</p>
+                    </div>
+                </div>
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button class="primaryAction btn btn-lg btn-primary btn-orange" type="submit">Upload</button>
+            </form>
+            <br>
+            <p><a href="/movies">Back to movies</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
