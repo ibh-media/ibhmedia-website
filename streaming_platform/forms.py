@@ -18,4 +18,4 @@ class MovieForm(forms.ModelForm):
         widgets = {
             'release_date': DateInput(),
         }
-        fields = ('title', 'director', 'thumbnail', 'video_file', 'bio' )
+        fields = ('title', 'director', 'thumbnail', 'video_file', 'summary' )

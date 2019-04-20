@@ -26,7 +26,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=200)
     director = models.CharField(max_length=100, default='not found')
     duration = models.CharField(max_length=8)
-    bio = models.TextField(max_length=300, default='not found')
+    summary = models.TextField(max_length=300, default='not found')
     release_date = models.DateField(default=datetime.date.today)
     url = models.URLField(max_length=200)
     slug = models.SlugField(unique=True)
