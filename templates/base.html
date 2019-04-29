@@ -7,68 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/png" href="../static/img/pixs-tv_favicon.jpg"/>
+    <link rel="shortcut icon" type="image/png" href="../static/img/pixs-tv_favicon.jpg" />
 
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS/JS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Static css styles -->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <span class="nav-link" href="#">Trending:</span>
-                </li>
-            </ul>
-            {% if user.is_authenticated %}
-            <div class="user-greetings">
-                <a class="user-link my-2 my-sm-0" href="/accounts/profile">Profile</a>
-            </div>
-            <div class="logout-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/logout/">Log Out</a>
-            </div>
-            {% else %}
-            <div class="signup-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/signup/">Sign Up</a>
-            </div>
-            <div class="login-btn">
-                <a class="user-link my-2 my-sm-0" href="/accounts/login/">Log In</a>
-            </div>
-            {% endif %}
-            <form class="form-inline mt-2 mt-md-0" action="/" method="GET">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary btn-orange my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <a href="/"><img src="{% static 'img/pixs-tv_lg_hor.png' %}" height="60" class="d-inline-block align-top" alt=""></a>
+            <a href="/" class="nav-logo"><img src="{% static 'img/pixs-tv_lg_hor.png' %}" height="60" class="d-inline-block align-top"
+                    alt=""></a>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarText">
-            <ul class="navbar-nav ml-auto menu-text">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto menu-text">
                 <li class="nav-item">
                     <a class="nav-link" href="/tv/"><b>TV</b></a>
                 </li>
@@ -82,6 +57,21 @@
                     <a class="nav-link" href="/podcasts"><b>PODCASTS</b></a>
                 </li>
             </ul>
+            {% if user.is_authenticated %}
+            <div class="profile-btn">
+                <a class="user-link my-2 my-sm-0 btn btn-primary" href="/accounts/profile"><b>PROFILE</b></a>
+            </div>
+            <div class="logout-btn">
+                <a class="user-link my-2 my-sm-0 btn btn-orange" href="/accounts/logout/"><b>LOG OUT</b></a>
+            </div>
+            {% else %}
+            <div class="login-btn">
+                <a class="user-link my-2 my-sm-0 btn btn-primary" href="/accounts/login/"><b>LOG IN</b></a>
+            </div>
+            <div class="signup-btn">
+                <a class="user-link my-2 my-sm-0 btn btn-orange" href="/accounts/signup/"><b>SIGN UP</b></a>
+            </div>
+            {% endif %}
         </div>
     </nav>
 
@@ -133,7 +123,8 @@
                             <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
                             <a href="http://youtube.com/"><i class="fab fa-youtube-square fa-2x"></i></a>
                         </div>
-                        <p>&copy; 2019 Pixs TV &middot; <a href="privacy">Privacy</a> &middot; <a href="tos">Terms</a></p>
+                        <p>&copy; 2019 Pixs TV &middot; <a href="privacy">Privacy</a> &middot; <a href="tos">Terms</a>
+                        </p>
                     </div>
                 </div>
             </div>
