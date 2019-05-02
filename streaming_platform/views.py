@@ -5,19 +5,27 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-# Import models and forms
+# Import models
 from .models import TV_channel, Movie, Song, Podcast
+
+# Import forms
 from .forms import MusicForm, MovieForm
 
-# Create your views here.
+# Import filters
+from .filters import MovieFilter
+
+# Views.
 def index(request):
     return render(request, 'index.html')
 
+# CONTENT
+# TV
 @login_required(login_url="/accounts/login")
 def tv(request):
     tv_channels = TV_channel.objects.all().order_by('live') # order by any variable in Movie class from models 
     return render(request, 'tv.html', {'tv_channels': tv_channels})
 
+# Movies
 @login_required(login_url="/accounts/login")
 def movies(request):
     movies = Movie.objects.all().order_by('release_date') 
@@ -40,6 +48,13 @@ def movie_detail(request, slug):
     return render(request, 'movie_detail.html', {'movie': movie})
 
 @login_required(login_url="/accounts/login")
+def movie_filter(request):
+    movie_list = Movie.objects.all()
+    movie_filter = MovieFilter(request.GET, queryset=movie_list)
+    return render(request, 'filters/movie_filter.html', {'filter': movie_filter}) 
+
+# Music
+@login_required(login_url="/accounts/login")
 def songs(request):
     songs = Song.objects.all().order_by('release_date')
     return render(request, 'music.html', {'songs': songs})
@@ -60,6 +75,7 @@ def music_detail(request, slug):
     song = Song.objects.get(slug=slug)
     return render(request, 'music_detail.html', {'song': song})
 
+# Podcasts
 @login_required(login_url="/accounts/login")
 def podcasts(request):
     podcasts = Podcast.objects.all().order_by('release_date') 

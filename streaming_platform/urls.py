@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^tv/$', views.tv, name='tv'),
     url(r'^movies/$', views.movies, name='movies'),
     url(r'^movies/movie_upload/$', views.movie_upload, name='movie_upload'),
+    url(r'^movies/filter/$', views.movie_filter, name='movie_filter'),
     url(r'^movies/(?P<slug>[\w-]+)/$', views.movie_detail, name='movie_detail'),
     url(r'^music/$', views.songs, name='songs'),
     url(r'^music/music_upload/$', views.music_upload, name='music_upload'),

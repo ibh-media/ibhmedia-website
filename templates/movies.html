@@ -11,6 +11,7 @@
       {% if movies %}
       <div>
         <h1>ALL MOVIES</h1><br>
+        <a href="/movies/filter" class="btn btn-primary">Filter</a>
         {% if request.user.is_superuser %}
         <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span>
         {% endif %}
