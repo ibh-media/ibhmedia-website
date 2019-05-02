@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserChangeForm
 from .forms import EditUserForm, EditProfileForm
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'account/profile.html')
 
 def edit_profile(request):
     if request.method == 'POST':
@@ -24,4 +24,4 @@ def edit_profile(request):
         form = EditUserForm(instance=request.user)
         profile_form = EditProfileForm(instance=request.user.profile)
         args = {'form': form, 'profile_form': profile_form}
-        return render(request, 'edit_profile.html', args)
+        return render(request, 'account/update_profile.html', args)

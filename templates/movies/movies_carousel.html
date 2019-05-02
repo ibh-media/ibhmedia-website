@@ -5,26 +5,30 @@
 {% block title %}Movies{% endblock %}
 {% block content %}
 <div id="bannerimage"></div>
+<form method="get">
+  {{ filter.form.as_p }}
+  <button type="submit">Filter</button>
+</form>
 <div class="container">
   <div class="results">
     <div class="movies">
       {% if movies %}
       <div>
         <h1>ALL MOVIES</h1><br>
-        <a href="/movies/filter" class="btn btn-primary">Filter</a>
         {% if request.user.is_superuser %}
         <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span>
         {% endif %}
         <br><br>
+        <ul>
       </div>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          {% for movie in movies %}
+          {% for movie in filter.qs %}
           <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
           {% endfor %}
         </ol>
         <div class="carousel-inner">
-          {% for movie in movies %}
+          {% for movie in filter.qs %}
           <a href="{{ movie.slug }}"><div class="carousel-item carousel-item-movie active">
             <img src="{{ movie.thumbnail.url }}" alt="Los Angeles">
             <div class="carousel-caption carousel-caption-movie">

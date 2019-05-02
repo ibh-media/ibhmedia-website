@@ -23,13 +23,14 @@ def index(request):
 @login_required(login_url="/accounts/login")
 def tv(request):
     tv_channels = TV_channel.objects.all().order_by('live') # order by any variable in Movie class from models 
-    return render(request, 'tv.html', {'tv_channels': tv_channels})
+    return render(request, 'tv/tv.html', {'tv_channels': tv_channels})
 
 # Movies
 @login_required(login_url="/accounts/login")
 def movies(request):
     movies = Movie.objects.all().order_by('release_date') 
-    return render(request, 'movies.html', {'movies': movies})
+    movie_filter = MovieFilter(request.GET, queryset=movies)   
+    return render(request, 'movies/movies.html', {'movies': movies, 'filter': movie_filter})
 
 @staff_member_required(login_url="/movies")
 def movie_upload(request):
@@ -40,24 +41,18 @@ def movie_upload(request):
             return redirect('/movies')
     else:
         form = MovieForm()
-    return render(request, 'movie_upload.html', {'form': form})
+    return render(request, 'movies/movie_upload.html', {'form': form})
 
 @login_required(login_url="/accounts/login")
 def movie_detail(request, slug):
     movie = Movie.objects.get(slug=slug)
-    return render(request, 'movie_detail.html', {'movie': movie})
-
-@login_required(login_url="/accounts/login")
-def movie_filter(request):
-    movie_list = Movie.objects.all()
-    movie_filter = MovieFilter(request.GET, queryset=movie_list)
-    return render(request, 'filters/movie_filter.html', {'filter': movie_filter}) 
+    return render(request, 'movies/movie_detail.html', {'movie': movie})
 
 # Music
 @login_required(login_url="/accounts/login")
 def songs(request):
     songs = Song.objects.all().order_by('release_date')
-    return render(request, 'music.html', {'songs': songs})
+    return render(request, 'music/music.html', {'songs': songs})
 
 @login_required(login_url="/accounts/login")
 def music_upload(request):
@@ -68,16 +63,16 @@ def music_upload(request):
             return redirect('/music')
     else:
         form = MusicForm()
-    return render(request, 'music_upload.html', {'form': form})
+    return render(request, 'music/music_upload.html', {'form': form})
 
 @login_required(login_url="/accounts/login")
 def music_detail(request, slug):
     song = Song.objects.get(slug=slug)
-    return render(request, 'music_detail.html', {'song': song})
+    return render(request, 'music/music_detail.html', {'song': song})
 
 # Podcasts
 @login_required(login_url="/accounts/login")
 def podcasts(request):
     podcasts = Podcast.objects.all().order_by('release_date') 
-    return render(request, 'podcasts.html', {'podcasts': podcasts})
+    return render(request, 'podcasts/podcasts.html', {'podcasts': podcasts})
 
