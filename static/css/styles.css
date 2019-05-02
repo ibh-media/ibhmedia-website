@@ -257,10 +257,14 @@ body {
   padding-bottom: 50px;
 }
 
+.filter-label {
+  margin-top: 15px;
+  margin-bottom: -20px;
+}
+
 .filter-btn {
   color: white;
 }
-
 
 /* FOOTER 
   --------------------------------------------------------------- */
