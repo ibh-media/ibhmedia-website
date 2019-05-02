@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static from staticfiles %}
+{% load widget_tweaks %}
 
 {% block title %}Movies{% endblock %}
 {% block content %}
@@ -8,20 +9,31 @@
 
 <div class="row">
     <div class="col-sm-3 filter">
-        <h1>Filter</h1>
-        <br>
+        <h3><b>Filter by:</b></h3>
         <form method="get">
-            {{ filter.form.as_p }}
-            <button type="submit">Filter</button>
+            <div>
+                {{ filter.form.title.label_tag }}<br>
+                {{ filter.form.title|add_class:"form-control" }}
+            </div>
+            <div>
+                {{ filter.form.director.label_tag }}<br>
+                {{ filter.form.director|add_class:"form-control" }}
+            </div>
+            <div>
+                {{ filter.form.release_date.label_tag }}<br>
+                {{ filter.form.release_date|add_class:"form-control" }}
+            </div><br>
+            <button type="submit" class="btn btn-orange filter-btn"><i class="fa fa-filter"></i> Filter</button>
         </form>
     </div>
     <div class="col-md-8 col-sm-9 results">
         <div class="movies">
             {% if movies %}
             <div>
-                <h1>ALL MOVIES</h1><br>
+                <h3><b>Results:</b></h3><br>
                 {% if request.user.is_superuser %}
-                <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span><br><br>
+                <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a
+                            movie</button></a></span><br><br>
                 {% endif %}
             </div>
             <div class="row">
@@ -29,25 +41,11 @@
                 <div class="col-sm-3">
                     <div class="movie-img">
                         <a href="{{ movie.slug }}">
-                            <img class="thumbnail img-responsive rounded" src="{{ movie.thumbnail.url }}", alt="Image not found">
+                            <img class="thumbnail img-responsive rounded" src="{{ movie.thumbnail.url }}" ,
+                                alt="Image not found">
                             <div class="bottom-left">{{ movie.title }}</div>
-                        </a>        
-                    </div><br>
-                    <!--
-                    <div class="card">
-                        <a href="{{ movie.slug }}">
-                            <img class="thumbnail" src="{{ movie.thumbnail.url }}">
                         </a>
-                        <div class="card-body">
-                            <a href="{{ movie.slug }}">
-                                <h5 class="card-title">{{ movie.title }}</h5>
-                            </a>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ movie.director }}</h6>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">{{ movie.release_date }}</small>
-                            </div>
-                        </div>
-                    </div>-->
+                    </div><br>
                 </div>
                 {% endfor %}
             </div>
