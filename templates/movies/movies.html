@@ -9,6 +9,7 @@
 <div class="row">
     <div class="col-sm-3 filter">
         <h1>Filter</h1>
+        <br>
         <form method="get">
             {{ filter.form.as_p }}
             <button type="submit">Filter</button>
@@ -20,14 +21,19 @@
             <div>
                 <h1>ALL MOVIES</h1><br>
                 {% if request.user.is_superuser %}
-                <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span>
+                <span><a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a></span><br><br>
                 {% endif %}
-                <br><br>
-                <ul>
             </div>
             <div class="row">
                 {% for movie in filter.qs %}
-                <div class="col-md-3">
+                <div class="col-sm-3">
+                    <div class="movie-img">
+                        <a href="{{ movie.slug }}">
+                            <img class="thumbnail img-responsive rounded" src="{{ movie.thumbnail.url }}", alt="Image not found">
+                            <div class="bottom-left">{{ movie.title }}</div>
+                        </a>        
+                    </div><br>
+                    <!--
                     <div class="card">
                         <a href="{{ movie.slug }}">
                             <img class="thumbnail" src="{{ movie.thumbnail.url }}">
@@ -41,7 +47,7 @@
                                 <small class="text-muted">{{ movie.release_date }}</small>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 {% endfor %}
             </div>
