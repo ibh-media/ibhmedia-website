@@ -13,17 +13,18 @@
         <form method="get">
             <div>
                 <div class="filter-label">Title:</div><br>
-                {{ filter.form.title__contains|add_class:"form-control" }}
+                {{ filter.form.title|add_class:"form-control" }}
             </div>
             <div>
                 <div class="filter-label">Director:</div><br>
-                {{ filter.form.director__contains|add_class:"form-control" }}
+                {{ filter.form.director|add_class:"form-control" }}
             </div>
+            <!--
             <div>
                 <div class="filter-label">Released between:</div><br>
-                {{ filter.form.release_date__year__gt|add_class:"form-control" }}<br>
-                {{ filter.form.release_date__year__lt|add_class:"form-control" }}
-            </div><br>
+                {{ filter.form.year__gt|add_class:"form-control" }}<br>
+                {{ filter.form.year__lt|add_class:"form-control" }}
+            </div>--><br>
             <button type="submit" class="btn btn-orange filter-btn"><i class="fa fa-filter"></i> Filter</button>
         </form>
     </div>

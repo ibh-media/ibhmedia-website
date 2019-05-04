@@ -25,6 +25,11 @@
                         <p style="color: red">{{ form.director.errors }}</p>
                     </div>
                     <div class="col-md-7 mb-3">
+                        {{ form.year_of_release.label_tag }}<br>
+                        {{ form.year_of_release|add_class:"form-control" }}
+                        <p style="color: red">{{ form.summary.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
                         {{ form.summary.label_tag }}<br>
                         {{ form.summary|add_class:"form-control" }}
                         <p style="color: red">{{ form.summary.errors }}</p>

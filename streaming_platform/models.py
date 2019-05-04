@@ -27,7 +27,7 @@ class Movie(models.Model):
     director = models.CharField(max_length=100, default='not found')
     duration = models.CharField(max_length=8)
     summary = models.TextField(max_length=300, default='not found')
-    release_date = models.DateField(default=datetime.date.today)
+    year_of_release = models.IntegerField(choices=[(r,r) for r in range(1920, datetime.date.today().year+1)], default=datetime.date.today().year)
     url = models.URLField(max_length=200)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='movie_thumbnails', default='not found', blank=False)

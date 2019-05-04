@@ -15,7 +15,4 @@ class MusicForm(forms.ModelForm):
 class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        widgets = {
-            'release_date': DateInput(),
-        }
-        fields = ('title', 'director', 'thumbnail', 'video_file', 'summary' )
+        fields = ('title', 'director', 'year_of_release', 'summary', 'thumbnail', 'video_file',  )

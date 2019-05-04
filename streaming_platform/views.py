@@ -28,7 +28,7 @@ def tv(request):
 # Movies
 @login_required(login_url="/accounts/login")
 def movies(request):
-    movies = Movie.objects.all().order_by('release_date') 
+    movies = Movie.objects.all().order_by('year_of_release') 
     movie_filter = MovieFilter(request.GET, queryset=movies)   
     return render(request, 'movies/movies.html', {'movies': movies, 'filter': movie_filter})
 
