@@ -34,7 +34,7 @@ def movies(request):
     movies = Movie.objects.all().order_by('-year_of_release')
     movie_filter = MovieFilter(request.GET, queryset=movies)
 
-    return render(request, 'movies/movies.html', {'movies': movies, 'page': page, 'filter': movie_filter})
+    return render(request, 'movies/movies.html', {'movies': movies, 'filter': movie_filter})
 
 @staff_member_required(login_url="/movies")
 def movie_upload(request):
