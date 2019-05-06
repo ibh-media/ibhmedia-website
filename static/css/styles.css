@@ -266,6 +266,11 @@ body {
   color: white;
 }
 
+.year-filter {
+  width: 6rem !important;
+}
+
+
 /* FOOTER 
   --------------------------------------------------------------- */
 footer {
