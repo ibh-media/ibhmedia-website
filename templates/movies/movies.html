@@ -41,7 +41,7 @@
                 {% endif %} 
             </div>
             <div class="row">
-                {% for movie in movies %}
+                {% for movie in filter.qs %}
                 <div class="col-sm-3">
                     <div class="movie-img">
                         <a href="{{ movie.slug }}">
