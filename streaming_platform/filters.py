@@ -1,17 +1,5 @@
 from .models import Movie
 import django_filters
-from django import forms
-
-'''
-class MovieFilter(django_filters.FilterSet):
-    class Meta:
-        model = Movie
-        fields = {
-            'title': ['contains'],
-            'director': ['contains'],
-            'release_date': ['year__lt', 'year__gt'],
-        }
-'''
 
 class MovieFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(lookup_expr='icontains')
@@ -22,7 +10,4 @@ class MovieFilter(django_filters.FilterSet):
     
     class Meta:
         model = Movie
-        fields = ['title', 'director', 'year__gte', 'year__lte'] # add this to fields for yea rof release filter -- 'year__gt', 'year__lt'
-        widgets = {
-            'year__gt': forms.DateInput()
-        }    
+        fields = ['title', 'director', 'year__gte', 'year__lte'] # add this to fields for yea rof release filter -- 'year__gt', 'year__lt' 

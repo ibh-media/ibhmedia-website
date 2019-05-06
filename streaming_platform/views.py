@@ -14,6 +14,9 @@ from .forms import MusicForm, MovieForm
 # Import filters
 from .filters import MovieFilter
 
+# Import pagination
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Views.
 def index(request):
     return render(request, 'index.html')
@@ -28,9 +31,10 @@ def tv(request):
 # Movies
 @login_required(login_url="/accounts/login")
 def movies(request):
-    movies = Movie.objects.all().order_by('year_of_release') 
-    movie_filter = MovieFilter(request.GET, queryset=movies)   
-    return render(request, 'movies/movies.html', {'movies': movies, 'filter': movie_filter})
+    movies = Movie.objects.all().order_by('-year_of_release')
+    movie_filter = MovieFilter(request.GET, queryset=movies)
+
+    return render(request, 'movies/movies.html', {'movies': movies, 'page': page, 'filter': movie_filter})
 
 @staff_member_required(login_url="/movies")
 def movie_upload(request):

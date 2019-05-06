@@ -245,12 +245,13 @@ body {
 .filter {
   padding-left: 4rem;
   padding-top: 30px;
+  padding-bottom: 110px;
 }
 
 .results {
   padding-left: 4rem;
   padding-top: 30px;
-  padding-bottom: 100px;
+  padding-bottom: 110px;
 }
 
 .result-elem {

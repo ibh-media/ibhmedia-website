@@ -26,6 +26,7 @@
                     <span> - </span>
                     {{ filter.form.year__lte|add_class:"form-control year-filter" }}
                 </div>
+                <small>Input a number between 1920 and now</small>
             </div><br>
             <button type="submit" class="btn btn-orange filter-btn"><i class="fa fa-filter"></i> Filter</button>
         </form>
@@ -36,13 +37,11 @@
             <div>
                 <h3><b>Results:</b></h3><br>
                 {% if request.user.is_superuser %}
-                <span><a href="/movies/movie_upload"><button class="btn btn-primary"><i class="fa fa-upload"></i> Upload
-                            a
-                            movie</button></a></span><br><br>
-                {% endif %}
+                <span><a href="/movies/movie_upload"><button class="btn btn-primary"><i class="fa fa-upload"></i> Upload a movie</button></a></span><br><br>
+                {% endif %} 
             </div>
             <div class="row">
-                {% for movie in filter.qs %}
+                {% for movie in movies %}
                 <div class="col-sm-3">
                     <div class="movie-img">
                         <a href="{{ movie.slug }}">
@@ -55,8 +54,9 @@
                 {% endfor %}
             </div>
             {% else %}
-            <h1>No movies Found</h1><br>
-            <a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a>
+            <h3><b>Results:</b></h3><br>
+            <a href="/movies/movie_upload"><button class="btn btn-primary">Upload a movie</button></a><br><br>
+            <h4>There are no movies that match those parameters</h4>
             {% endif %}
         </div>
     </div>
