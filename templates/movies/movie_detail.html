@@ -12,9 +12,9 @@
         <h4>{{ movie.director }}</h4>
         <p>{{ movie.duration }}</p>
         <p>Released in {{ movie.year_of_release }}</p>
-        <video width='400' controls>
+        <video width='400' controls controlsList="nodownload" poster="{{ object.thumbnail.url }}">
             <source src="../../media/{{movie.video_file}}" type="video/mp4"></source>
-            Your browser does not support the video tag.
+            Sorry, your browser does not support this video.
         </video>
     </div>
     <a href="/movies" class="btn btn-primary">Back</a>
