@@ -11,7 +11,8 @@
         <h1>{{ movie.title }}</h1>
         <h4>{{ movie.director }}</h4>
         <p>{{ movie.duration }}</p>
-        <p>Released in {{ movie.year_of_release }}</p>
+        <p><b>Summary: </b>{{ movie.summary }}</p>
+        <p><b>Released</b> in {{ movie.year_of_release }}</p>
         <video width='400' controls controlsList="nodownload" poster="{{ object.thumbnail.url }}">
             <source src="../../media/{{movie.video_file}}" type="video/mp4"></source>
             Sorry, your browser does not support this video.
