@@ -57,7 +57,7 @@
             {% for movie in filter.qs%}
             <div class="row">
                 <div class="col-sm-12 movie-preview" id="movie-preview-{{ movie.title }}">
-                    <video height='400' nocontrols controlsList="nodownload" poster="{{ object.thumbnail.url }}">
+                    <video height='400' controls class="movie-preview-video-{{ movie.title }}" controlsList="nodownload" poster="{{ object.thumbnail.url }}">
                         <source src="../../media/{{movie.video_file}}" type="video/mp4">
                         </source>
                         Sorry, your browser does not support this video.
@@ -94,6 +94,7 @@
         } else {
             $('.movie-preview').hide();
             movie_div.style.display = 'block'
+            movie_video_preview_class = '.movie-preview-video-' + movie
         }
     }
     
