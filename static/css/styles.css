@@ -16,10 +16,14 @@
 
 body {
   height: 100%;
+  min-height: 100vh;
   padding-top: 5rem;
-  padding-bottom: 3rem;
   color: #5a5a5a;
   position: relative;
+}
+
+main {
+  padding-bottom: 8rem;
 }
 
 .btn-orange {
@@ -152,7 +156,6 @@ body {
 
 /* RESPONSIVE CSS
   -------------------------------------------------- */
-
 @media (min-width: 40em) {
 
   /* Bump up size of carousel content */
@@ -307,16 +310,14 @@ body {
 
 /* FOOTER 
   --------------------------------------------------------------- */
-.copyright {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  line-height: 30px;
-  padding-top: 10px;
+footer {
+  padding-top: 20px;
   padding-left: 20px;
   background-color: #343A40;
   color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 @media (max-width:767px) {
