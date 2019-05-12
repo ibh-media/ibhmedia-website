@@ -58,6 +58,11 @@
                 </li>
             </ul>
             {% if user.is_authenticated %}
+            <div class="admin-btn">
+                {% if request.user.is_superuser %}
+                <a class="user-link my-2 my-sm-0 btn btn-white-black" href="/admin"><b>ADMIN PANEL</b></a>
+                {% endif %}
+            </div>
             <div class="profile-btn">
                 <a class="user-link my-2 my-sm-0 btn btn-primary" href="/accounts/profile"><b>PROFILE</b></a>
             </div>

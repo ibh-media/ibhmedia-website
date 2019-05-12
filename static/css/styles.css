@@ -31,6 +31,12 @@ main {
   border-color: rgb(255, 123, 0) !important;
 }
 
+.btn-white-black {
+  background-color: white !important;
+  border-color: black !important;
+  color: black !important;
+}
+
 .nav-logo {
   padding-right: 4rem;
 }
@@ -38,7 +44,8 @@ main {
 .signup-btn,
 .login-btn,
 .logout-btn,
-.profile-btn {
+.profile-btn,
+.admin-btn {
   padding-right: 15px;
 }
 
