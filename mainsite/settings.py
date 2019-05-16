@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'django_filters',
+    'multiselectfield',
 ]
 
 SITE_ID = 1

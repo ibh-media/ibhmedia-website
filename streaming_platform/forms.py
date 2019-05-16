@@ -15,4 +15,4 @@ class MusicForm(forms.ModelForm):
 class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('title', 'director', 'year_of_release', 'summary', 'thumbnail', 'video_file',  )
+        fields = ('title', 'director', 'year_of_release', 'genres', 'production', 'summary', 'thumbnail', 'video_file',  )

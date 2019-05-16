@@ -27,7 +27,22 @@
                     <div class="col-md-7 mb-3">
                         {{ form.year_of_release.label_tag }}<br>
                         {{ form.year_of_release|add_class:"form-control" }}
-                        <p style="color: red">{{ form.summary.errors }}</p>
+                        <p style="color: red">{{ form.year_of_release.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.genres.label_tag }} (Select up to 5)<br>
+                        {% for value, text in form.genres.field.choices %}
+                        <div class="ui slider checkbox">
+                            <input id="id_genres_{{ forloop.counter0 }}" name="{{ form.genres.name }}" type="checkbox" value="{{ value }}"{% if value in checked_genres %} checked="checked"{% endif %}>
+                            <label>{{ text }}</label>
+                        </div>
+                        {% endfor %}
+                        <p style="color: red">{{ form.genres.errors }}</p>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        {{ form.production.label_tag }}<br>
+                        {{ form.production|add_class:"form-control" }}
+                        <p style="color: red">{{ form.production.errors }}</p>
                     </div>
                     <div class="col-md-7 mb-3">
                         {{ form.summary.label_tag }}<br>
