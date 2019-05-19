@@ -14,47 +14,52 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.title.label_tag }}<br>
-                        {{ form.title|add_class:"form-control" }}
+                        {{ form.title|add_class:"form-control title-input" }}
                         <p style="color: red">{{ form.title.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.director.label_tag }}<br>
-                        {{ form.director|add_class:"form-control" }}
+                        {{ form.director|add_class:"form-control director-input" }}
                         <p style="color: red">{{ form.director.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.year_of_release.label_tag }}<br>
-                        {{ form.year_of_release|add_class:"form-control" }}
+                        {{ form.year_of_release|add_class:"form-control year-filter" }}
                         <p style="color: red">{{ form.year_of_release.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
-                        {{ form.genres.label_tag }} (Select up to 5)<br>
-                        {% for value, text in form.genres.field.choices %}
-                        <div class="ui slider checkbox">
-                            <input id="id_genres_{{ forloop.counter0 }}" name="{{ form.genres.name }}" type="checkbox" value="{{ value }}"{% if value in checked_genres %} checked="checked"{% endif %}>
-                            <label>{{ text }}</label>
-                        </div>
-                        {% endfor %}
-                        <p style="color: red">{{ form.genres.errors }}</p>
+                    <div class="col-md-2 mb-3">
+                        {{ form.genre1.label_tag }}<br>
+                        {{ form.genre1|add_class:"form-control genre-filter" }}
+                        <p style="color: red">{{ form.genre1.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-2 mb-3">
+                        {{ form.genre2.label_tag }}<br>
+                        {{ form.genre2|add_class:"form-control genre-filter" }}
+                        <p style="color: red">{{ form.genre2.errors }}</p>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        {{ form.genre3.label_tag }}<br>
+                        {{ form.genre3|add_class:"form-control genre-filter" }}
+                        <p style="color: red">{{ form.genre3.errors }}</p>
+                    </div>
+                    <div class="col-md-12 mb-3">
                         {{ form.production.label_tag }}<br>
-                        {{ form.production|add_class:"form-control" }}
+                        {{ form.production|add_class:"form-control production-filter" }}
                         <p style="color: red">{{ form.production.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.summary.label_tag }}<br>
-                        {{ form.summary|add_class:"form-control" }}
+                        {{ form.summary|add_class:"form-control summary-box" }}
                         <p style="color: red">{{ form.summary.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.thumbnail.label_tag }}<br>
                         {{ form.thumbnail|add_class:"thumbnail-input" }}
                         <p style="color: red">{{ form.thumbnail.errors }}</p>
                     </div>
-                    <div class="col-md-7 mb-3">
+                    <div class="col-md-12 mb-3">
                         {{ form.video_file.label_tag }}<br>
                         {{ form.video_file|add_class:"thumbnail-input" }}
                         <p style="color: red">{{ form.video_file.errors }}</p>

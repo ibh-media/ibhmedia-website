@@ -37,6 +37,10 @@ main {
   color: black !important;
 }
 
+.btn-white-black:hover {
+  background-color: lightgray !important;
+}
+
 .nav-logo {
   padding-right: 4rem;
 }
@@ -275,10 +279,33 @@ main {
 
 .filter-btn {
   color: white;
+  width: 100%;
+}
+
+/* UPLOAD AND FILTER INPUT STYLES */
+.title-input {
+  width: 35rem !important;
+}
+
+.director-input {
+  width: 35rem !important;
 }
 
 .year-filter {
   width: 6rem !important;
+}
+
+.genre-filter {
+  width: 8rem !important;
+}
+
+.production-filter {
+  width: 9rem !important;
+}
+
+.summary-box {
+  width: 35rem !important;
+  height: 6rem !important;
 }
 
 .movie-preview {

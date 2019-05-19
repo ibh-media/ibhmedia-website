@@ -12,7 +12,8 @@
         <h4>{{ movie.director }}</h4>
         <p>{{ movie.duration }}</p>
         <p><b>Summary: </b>{{ movie.summary }}</p>
-        <p><b>Released</b> in {{ movie.year_of_release }}</p>
+        <p><b>Released in: </b>{{ movie.year_of_release }}</p>
+        <p><b>Genres: </b>{{ movie.genre1 }}{% if movie.genre2 != '-------'%}, {{ movie.genre2 }}{% elif movie.genre3 != '-------'%}, {{ movie.genre3 }} {% endif%}</p>
         <video width='400' controls controlsList="nodownload" poster="{{ object.thumbnail.url }}">
             <source src="../../media/{{movie.video_file}}" type="video/mp4"></source>
             Sorry, your browser does not support this video.
