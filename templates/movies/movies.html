@@ -30,16 +30,8 @@
                     <small>Input a number between 1920 and now</small>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <div class="filter-label">Main genre:</div><br>
-                    {{ filter.form.genre1|add_class:"form-control genre-filter" }}
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="filter-label">Sub-genre 1:</div><br>
-                    {{ filter.form.genre2|add_class:"form-control genre-filter" }}
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="filter-label">Sub-genre 2:</div><br>
-                    {{ filter.form.genre3|add_class:"form-control genre-filter" }}
+                    <div class="filter-label">Genres: (Select up to 5)</div><br>
+                    {{ filter.form.genres }}
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="filter-label">Production:</div><br>
@@ -90,9 +82,9 @@
                             <h4>{{ movie.title }}</h4>
                             <p>{{ movie.director }}</p>
                             <p>{{ movie.summary }}</p>
-                            <p><a href="{{ movie.slug}}"><button class="btn btn-orange play-button"
+                            <p><a href="{{ movie.slug }}"><button class="btn btn-orange play-button"
                                     style="color: white;"><i class="fa fa-play fa-sm"></i> <b>Watch</b></button></a></p>
-                            <p><b>Genres: </b>{{ movie.genre1 }}{% if movie.genre2 != '-------'%}, {{ movie.genre2 }}{% elif movie.genre3 != '-------'%}, {{ movie.genre3 }} {% endif%}</p>
+                            <p><b>Genres: </b>{{ movie.genres }}</p>
                             <p><b>Production: </b>{{ movie.production }}</p>
                             <p><b>Released in: </b>{{ movie.year_of_release }}</p>
                         </div>

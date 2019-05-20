@@ -1,5 +1,8 @@
 from .models import Movie
 import django_filters
+from django import forms
+from operator import and_, or_
+from django.db.models import Q
 
 class MovieFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(lookup_expr='icontains')
@@ -14,10 +17,11 @@ class MovieFilter(django_filters.FilterSet):
                      ('Teen', 'Teen'),
                      ('Drama', 'Drama'))
 
-    genre1 = django_filters.ChoiceFilter(choices=MOVIE_GENERES)
-    genre2 = django_filters.ChoiceFilter(choices=MOVIE_GENERES)
-    genre3 = django_filters.ChoiceFilter(choices=MOVIE_GENERES)
+    genres = django_filters.MultipleChoiceFilter(choices=MOVIE_GENERES, method='filter_genres', widget=forms.CheckboxSelectMultiple)
 
     class Meta:
         model = Movie
-        fields = ['title', 'director', 'year__gte', 'year__lte', 'genre1', 'genre2', 'genre3', 'production']
+        fields = ['title', 'director', 'year__gte', 'year__lte', 'genres', 'production']
+
+    def filter_genres(self, queryset, name, genres):
+        return queryset.filter(reduce(or_, [Q(genres__icontains=q) for q in genres]))
