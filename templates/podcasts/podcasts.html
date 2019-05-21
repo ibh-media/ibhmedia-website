@@ -9,20 +9,34 @@
   <div class="results">
     <div class="podcasts">
       {% if podcasts %}
-      <h1>ALL PODCASTS</h1><br>
-      {% for podcast in podcasts %}
-      <div class="podcast result-elem">
-        <h2><a href="{{ podcast.url }}">{{ podcast.title }}</a></h2>
-        <h5>Production Company: </h5>
-        <p>{{ podcast.company }}</p>
-        <h5>Duration: </h5>
-        <p>{{ podcast.duration }}</p>
-        <h5>Release Date: </h5>
-        <p>{{ podcast.release_date }}</p>
+      <div>
+        <h1>ALL PODCASTS</h1><br>
+        <span><a href="/podcasts/podcast_upload"><button class="btn btn-primary">Upload your podcast</button></a></span>
+        <br><br>
       </div>
-      {% endfor %}
+      <div class="row">
+        {% for podcast in podcasts %}
+        <div class="col-md-3">
+          <div class="card">
+            <img src="{{ podcast.thumbnail.url }}" class="thumbnail-2">
+            <div class="card-body">
+              <a href="{{ podcast.slug }}" class="stretched-link">
+                <h5 class="card-title">{{ podcast.title }}</h5>
+              </a>
+              <h6 class="card-subtitle mb-2 text-muted">{{ podcast.author }}</h6>
+              <p class="card-subtitle mb-2 text-muted">{{ podcast.publication }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ podcast.duration }}</small>
+                <small class="text-muted">{{ podcast.release_date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
       {% else %}
-      <h1>No Podcasts Found</h1>
+      <h1>No Podcasts Found</h1><br>
+      <a href="/podcasts/podcast_upload"><button class="btn btn-primary">Upload your podcast</button></a>
       {% endif %}
     </div>
   </div>

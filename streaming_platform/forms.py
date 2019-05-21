@@ -1,5 +1,5 @@
 from django import forms
-from .models import Song, Movie
+from .models import Song, Movie, Podcast
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -7,12 +7,14 @@ class DateInput(forms.DateInput):
 class MusicForm(forms.ModelForm):
     class Meta:
         model = Song
-        widgets = {
-            'release_date': DateInput(),
-        }
         fields = ('title', 'author', 'thumbnail', 'video_file', )
 
 class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('title', 'director', 'year_of_release', 'genres' ,'production', 'summary', 'thumbnail', 'video_file',  ) #'genre1', 'genre2', 'genre3',
+        fields = ('title', 'director', 'year_of_release', 'genres' ,'production', 'summary', 'thumbnail', 'video_file',  )
+
+class PodcastForm(forms.ModelForm):
+    class Meta:
+        model = Podcast
+        fields = ('title', 'author', 'publication', 'thumbnail', 'audio_file', )

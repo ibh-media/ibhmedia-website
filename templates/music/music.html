@@ -18,11 +18,9 @@
         {% for song in songs %}
         <div class="col-md-3">
           <div class="card">
-            <a href="{{ song.slug }}">
-              <img class="thumbnail" src="{{ song.thumbnail.url }}">
-            </a>
+            <img src="{{ song.thumbnail.url }}" class="thumbnail-2">
             <div class="card-body">
-              <a href="{{ song.slug }}">
+              <a href="{{ song.slug }}" class="stretched-link">
                 <h5 class="card-title">{{ song.title }}</h5>
               </a>
               <h6 class="card-subtitle mb-2 text-muted">{{ song.author }}</h6>

@@ -9,13 +9,10 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import TV_channel, Movie, Song, Podcast
 
 # Import forms
-from .forms import MusicForm, MovieForm
+from .forms import MusicForm, MovieForm, PodcastForm
 
 # Import filters
 from .filters import MovieFilter
-
-# Import pagination
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Views.
 def index(request):
@@ -79,4 +76,20 @@ def music_detail(request, slug):
 def podcasts(request):
     podcasts = Podcast.objects.all().order_by('release_date') 
     return render(request, 'podcasts/podcasts.html', {'podcasts': podcasts})
+
+@login_required(login_url="/accounts/login")
+def podcast_upload(request):
+    if request.method == 'POST':
+        form = PodcastForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/podcasts')
+    else:
+        form = PodcastForm()
+    return render(request, 'podcasts/podcast_upload.html', {'form': form})
+
+@login_required(login_url="/accounts/login")
+def podcast_detail(request, slug):
+    podcast = Podcast.objects.get(slug=slug)
+    return render(request, 'podcasts/podcast_detail.html', {'podcast': podcast})
 

@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^music/music_upload/$', views.music_upload, name='music_upload'),
     url(r'^music/(?P<slug>[\w-]+)/$', views.music_detail, name='music_detail'),
     url(r'^podcasts/$', views.podcasts, name='podcasts'),
+    url(r'^podcasts/podcast_upload/$', views.podcast_upload, name='podcast_upload'),
+    url(r'^podcasts/(?P<slug>[\w-]+)/$', views.podcast_detail, name='podcast_detail'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

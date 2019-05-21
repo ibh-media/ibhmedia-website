@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ podcast.title }}{% endblock %}
+
+{% block content %}
+<div id="bannerimage"></div>
+<div class="container content-detail-page">
+    <div class="song">
+        <h1>{{ podcast.title }}</h1>
+        <h4>{{ podcast.author }}</h4>
+        <h4>{{ podcast.publication }}</h4>
+        <p>{{ podcast.duration }}</p>
+        <p>{{ podcast.release_date }}</p>
+         <audio controls>
+            <source src="../../media/{{podcast.audio_file}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio> 
+    </div>
+    <a href="/podcasts" class="btn btn-primary">Back</a>
+</div>
+{% endblock %}
