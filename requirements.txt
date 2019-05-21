@@ -6,6 +6,7 @@ colorama==0.3.9
 Django==1.11.20
 django-allauth==0.39.1
 django-filter==1.1.0
+django-multiselectfield==0.1.8
 django-widget-tweaks==1.4.3
 docutils==0.14
 future==0.16.0
