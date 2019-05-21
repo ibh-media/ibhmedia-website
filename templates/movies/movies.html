@@ -31,7 +31,13 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="filter-label">Genres: (Select up to 5)</div><br>
-                    {{ filter.form.genres }}
+                    {% for checkbox in filter.form.genres %}
+                    <div class="checkbox">
+                        <label>
+                                {{ checkbox.tag }} {{ checkbox.choice_label }}
+                        </label>
+                    </div>
+                    {% endfor %}
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="filter-label">Production:</div><br>
@@ -40,11 +46,11 @@
                 <div class="col-md-6 mb-3">
                     <button type="submit" class="btn btn-orange filter-btn"><i class="fa fa-filter"></i> Filter </button>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <a href="/movies"><button type="submit" class="btn reset-btn btn-white-black"><i class="fa fa-redo-alt"></i> Reset all filters</button></a>
-                </div>
             </div>
         </form>
+        <div class="col-md-6 mb-3">
+            <a href="/movies"><button type="submit" class="btn reset-btn btn-white-black"><i class="fa fa-redo-alt"></i> Reset</button></a>
+        </div>
     </div>
     <div class="col-md-8 col-sm-9 results">
         <div class="movies">
