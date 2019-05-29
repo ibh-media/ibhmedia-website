@@ -56,8 +56,18 @@ main {
 .login-btn,
 .logout-btn,
 .profile-btn,
-.admin-btn {
+.admin-btn,
+.mypixs-link {
   padding-right: 15px;
+}
+
+.pixs-link {
+  color: rgba(0,0,0,.5);
+}
+
+.pixs-link:hover {
+  color: #343A40;
+  text-decoration: none;
 }
 
 .user-link {

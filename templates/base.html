@@ -58,6 +58,9 @@
                 </li>
             </ul>
             {% if user.is_authenticated %}
+            <div class="mypixs-link menu-text">
+                <a class="my-2 my-sm-0 pixs-link" href="/mypixs"><b>MY PIXS</b></a>
+            </div>
             <div class="admin-btn">
                 {% if request.user.is_superuser %}
                 <a class="user-link my-2 my-sm-0 btn btn-white-black" href="/admin"><b>ADMIN PANEL</b></a>
