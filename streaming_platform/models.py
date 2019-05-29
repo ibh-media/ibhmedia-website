@@ -7,6 +7,7 @@ import datetime
 
 from multiselectfield import MultiSelectField
 
+from django.contrib.auth.models import User
 '''
 ===== IMPORTANT =====
 Every time you change/create a model:
@@ -45,7 +46,7 @@ class Movie(models.Model):
     production = models.CharField(max_length=100, choices=MOVIE_PRODUCTION, default=None)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to='movie_thumbnails', default='not found', blank=False)
-    video_file= models.FileField(upload_to='movies/', default='not found', blank=True)
+    video_file = models.FileField(upload_to='movies/', default='not found', blank=True)
 
     def __str__(self):
         return self.title
@@ -86,3 +87,38 @@ class Podcast(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Podcast, self).save(*args, **kwargs)
+
+class Favorite(models.Model):
+    current_user = models.ForeignKey(User, related_name='owner')
+    tv_channels = models.ManyToManyField(TV_channel, related_name='tv_channel_set', blank=True)
+    movies = models.ManyToManyField(Movie, related_name='movie_set', blank=True)
+    songs = models.ManyToManyField(Song, related_name='song_set', blank=True)
+    podcasts = models.ManyToManyField(Podcast, related_name='podcast_set', blank=True)
+
+    @classmethod
+    def make_favorite(cls, current_user, new_favorite):
+        favorite, created = cls.objects.get_or_create(
+            current_user = current_user
+        )
+        if isinstance(new_favorite, TV_channel):
+            favorite.tv_channels.add(new_favorite)
+        elif isinstance(new_favorite, Movie):
+            favorite.movies.add(new_favorite)
+        elif isinstance(new_favorite, Song):
+            favorite.songs.add(new_favorite)
+        elif isinstance(new_favorite, Podcast):
+            favorite.podcasts.add(new_favorite)
+
+    @classmethod
+    def delete_favorite(cls, current_user, new_favorite):
+        favorite, created = cls.objects.get_or_create(
+            current_user = current_user
+        )
+        if isinstance(new_favorite, TV_channel):
+            favorite.tv_channels.remove(new_favorite)
+        elif isinstance(new_favorite, Movie):
+            favorite.movies.remove(new_favorite)
+        elif isinstance(new_favorite, Song):
+            favorite.songs.remove(new_favorite)
+        elif isinstance(new_favorite, Podcast):
+            favorite.podcasts.remove(new_favorite)

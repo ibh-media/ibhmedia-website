@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
 # Import models
-from .models import TV_channel, Movie, Song, Podcast
+from .models import TV_channel, Movie, Song, Podcast, Favorite
 
 # Import forms
 from .forms import MusicForm, MovieForm, PodcastForm
@@ -47,7 +47,19 @@ def movie_upload(request):
 @login_required(login_url="/accounts/login")
 def movie_detail(request, slug):
     movie = Movie.objects.get(slug=slug)
+    
     return render(request, 'movies/movie_detail.html', {'movie': movie})
+
+'''
+@login_required(login_url="/accounts/login")
+def favourite_movie(request, slug):
+    movie = Movie.objects.get(slug=slug)
+    if movie.favourite.filter(id=request.user.id).exists():
+        movie.favourite.remove(request.user)
+    else:
+        movie.favourite.add(request.user)
+    return render(request, 'movies/movie_detail.html', {'movie': movie})
+'''
 
 # Music
 @login_required(login_url="/accounts/login")
@@ -93,3 +105,31 @@ def podcast_detail(request, slug):
     podcast = Podcast.objects.get(slug=slug)
     return render(request, 'podcasts/podcast_detail.html', {'podcast': podcast})
 
+# Favorites
+@login_required(login_url='/accounts/login')
+def favorites(request):
+    favorite, created = Favorite.objects.get_or_create(current_user=request.user)
+    
+    favorite_tv_channels = favorite.tv_channels.all()
+    favorite_movies = favorite.movies.all()
+    favorite_songs = favorite.songs.all()
+    favorite_podcasts = favorite.podcasts.all()
+
+    args = {
+        'favorite_tv_channels': favorite_tv_channels, 
+        'favorite_movies': favorite_movies, 
+        'favorite_songs': favorite_songs,
+        'favorite_podcasts': favorite_podcasts
+    }
+    
+    return render(request, 'favorites.html', args)
+
+@login_required(login_url="/accounts/login")
+def change_favorite(request, operation, content_type, slug):
+    new_favorite = content_type.objects.get(slug=slug)
+    if operation == 'add':
+        Favorite.make_favorite(request.user, new_favorite)
+    elif operation == 'remove':
+        Favorite.delete_favorite(request.user, new_favorite)
+
+    return render(request, 'index.html')

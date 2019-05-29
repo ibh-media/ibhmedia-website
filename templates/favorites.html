@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}My Pixs{% endblock %}
+
+{% block content %}
+<div id="bannerimage"></div>
+<div class="custom-container content-detail-page">
+    <h1><b>My Pixs</b></h1>
+    <div class="col-md-12 col-sm-12 favorites">
+        <h3 class="favorite-title"><b>Movies:</b></h3>
+        {% if favorite_movies %}
+        <div class="row">
+            {% for movie in favorite_movies %}
+            <div class="col-sm-3">
+                <div class="movie-img">
+                    <a onclick="show_hideDiv('{{ movie.title }}')">
+                        <img class="thumbnail img-responsive rounded" src="{{ movie.thumbnail.url }}" ,
+                            alt="Image not found">
+                        <div class="bottom-left">{{ movie.title }}</div>
+                    </a>
+                </div><br>
+            </div>
+            {% endfor %}
+        </div>
+        {% for movie in favorite_movies%}
+        <div class="row">
+            <div class="col-sm-12 movie-preview" id="movie-preview-{{ movie.title }}">
+                <video height='400' controls class="movie-preview-video-{{ movie.title }}" controlsList="nodownload" poster="{{ object.thumbnail.url }}">
+                    <source src="../../media/{{movie.video_file}}" type="video/mp4">
+                    </source>
+                    Sorry, your browser does not support this video.
+                </video>
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h4>{{ movie.title }}</h4>
+                        <p>{{ movie.director }}</p>
+                        <p>{{ movie.summary }}</p>
+                        <p><a href="{{ movie.slug }}"><button class="btn btn-orange play-button"
+                                style="color: white;"><i class="fa fa-play fa-sm"></i> <b>Watch</b></button></a></p>
+                        <p><b>Genres: </b>{{ movie.genres }}</p>
+                        <p><b>Production: </b>{{ movie.production }}</p>
+                        <p><b>Released in: </b>{{ movie.year_of_release }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="fav-else">
+            <h4>You haven't added any movie to your pixs</h4>
+            <a href="/movies" class="btn btn-orange" style="color: white">Add <i class="fas fa-plus"></i></a>
+        </div>
+        {% endif %}
+
+        <h3 class="favorite-title"><b>Songs:</b></h3>   
+        {% if favorite_songs %}
+        <div class="row">
+            {% for song in favorite_songs %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ song.thumbnail.url }}" class="thumbnail-2">
+                    <div class="card-body">
+                        <a href="{{ song.slug }}" class="stretched-link">
+                            <h5 class="card-title">{{ song.title }}</h5>
+                        </a>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ song.author }}</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{ song.duration }}</small>
+                            <small class="text-muted">{{ song.release_date }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="fav-else">
+            <h4>You haven't added any song to your pixs</h4>
+            <a href="/music" class="btn btn-orange" style="color: white">Add <i class="fas fa-plus"></i></a>
+        </div>
+        {% endif %}
+
+        <h3 class="favorite-title"><b>Podcasts:</b></h3>
+        {% if favorite_podcasts %}
+        <div class="row">
+            {% for podcast in favorite_podcasts %}
+            <div class="col-md-3">
+            <div class="card">
+                <img src="{{ podcast.thumbnail.url }}" class="thumbnail-2">
+                <div class="card-body">
+                    <a href="{{ podcast.slug }}" class="stretched-link">
+                        <h5 class="card-title">{{ podcast.title }}</h5>
+                    </a>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ podcast.author }}</h6>
+                    <p class="card-subtitle mb-2 text-muted">{{ podcast.publication }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ podcast.duration }}</small>
+                        <small class="text-muted">{{ podcast.release_date }}</small>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="fav-else">
+            <h4>You haven't added any podcast to your pixs</h4>
+            <a href="/podcasts" class="btn btn-orange" style="color: white">Add <i class="fas fa-plus"></i></a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function show_hideDiv(movie) {
+        movie_id = 'movie-preview-' + movie
+        movie_div = document.getElementById(movie_id)
+        if (movie_div.style.display === "block") {
+            movie_div.style.display = "none"
+        } else {
+            $('.movie-preview').hide();
+            movie_div.style.display = 'block'
+            movie_video_preview_class = '.movie-preview-video-' + movie
+        }
+    }
+    
+</script>
+{% endblock %}

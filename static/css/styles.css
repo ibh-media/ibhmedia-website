@@ -1,6 +1,13 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+.custom-container {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .fa-facebook-square,
 .fa-twitter-square,
 .fa-instagram,
@@ -287,6 +294,22 @@ main {
 .filter-btn {
   color: white;
   width: 100%;
+}
+
+/* FAVORITES */
+.favorites {
+  left: -1.8rem;  
+  padding-bottom: 110px;
+}
+
+.favorite-title {
+  padding-top: 30px;
+  padding-left: 0.8rem;
+}
+
+.fav-else {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
 }
 
 /* UPLOAD AND FILTER INPUT STYLES */

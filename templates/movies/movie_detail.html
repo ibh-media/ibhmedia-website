@@ -9,6 +9,12 @@
 <div class="container content-detail-page">
     <div class="movie">
         <h1>{{ movie.title }}</h1>
+        <!--
+        {% if is_favourite %}
+            <span><a href="/movies/{{ movie.slug }}/favourite"><i class="fas fa-bookmark fa-2x"></i></a></span>
+        {% else %}
+            <span><a href="/movies/{{ movie.slug }}/favourite"><i class="far fa-bookmark fa-2x"></i></a></span>
+        {% endif %}-->
         <h4>{{ movie.director }}</h4>
         <p>{{ movie.duration }}</p>
         <p><b>Summary: </b>{{ movie.summary }}</p>

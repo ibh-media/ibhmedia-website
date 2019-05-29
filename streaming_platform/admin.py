@@ -6,8 +6,10 @@ from .models import TV_channel
 from .models import Movie
 from .models import Song
 from .models import Podcast
+from .models import Favorite
 
 admin.site.register(TV_channel)
 admin.site.register(Movie)
 admin.site.register(Song)
 admin.site.register(Podcast)
+admin.site.register(Favorite)
