@@ -322,6 +322,19 @@ main {
   padding-bottom: 2rem;
 }
 
+.fav-detail-btn {
+  color: rgb(255, 123, 0);
+}
+
+.detail-heading > h1{
+  display: inline;
+  padding-right: 2%;
+}
+
+.detail-heading > span {
+  display: inline;
+}
+
 /* UPLOAD AND FILTER INPUT STYLES */
 .title-input {
   width: 35rem !important;

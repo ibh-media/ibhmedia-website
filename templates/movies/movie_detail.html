@@ -8,13 +8,14 @@
 <div id="bannerimage"></div>
 <div class="container content-detail-page">
     <div class="movie">
-        <h1>{{ movie.title }}</h1>
-        <!--
-        {% if is_favourite %}
-            <span><a href="/movies/{{ movie.slug }}/favourite"><i class="fas fa-bookmark fa-2x"></i></a></span>
-        {% else %}
-            <span><a href="/movies/{{ movie.slug }}/favourite"><i class="far fa-bookmark fa-2x"></i></a></span>
-        {% endif %}-->
+        <div class="detail-heading">
+            <h1>{{ movie.title }}</h1>
+            {% if movie in favorite_movies %}
+            <span onclick="remove_fav('{{ movie.slug }}')" class='fav-detail-btn'><i class="fas fa-bookmark fa-2x"></i></span>
+            {% else %}
+            <span onclick="add_fav('{{ movie.slug }}')" class='fav-detail-btn'><i class="far fa-bookmark fa-2x"></i></span>
+            {% endif %}
+        </div><br>
         <h4>{{ movie.director }}</h4>
         <p>{{ movie.duration }}</p>
         <p><b>Summary: </b>{{ movie.summary }}</p>
@@ -27,4 +28,34 @@
     </div>
     <a href="/movies" class="btn btn-primary">Back</a>
 </div>
+
+<script type="text/javascript">
+    function remove_fav(slug){
+        remove_url = '/mypixs/remove/Movie/' + slug
+        $.ajax({
+            type: "POST",
+            url: remove_url,
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(){
+                location.reload()
+            }
+        })
+    }
+
+    function add_fav(slug){
+        add_url = '/mypixs/add/Movie/' + slug
+        $.ajax({
+            type: "POST",
+            url: add_url,
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(){
+                location.reload() 
+            }
+        })
+    }
+</script>
 {% endblock %}

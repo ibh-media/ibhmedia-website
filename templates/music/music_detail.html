@@ -8,7 +8,14 @@
 <div id="bannerimage"></div>
 <div class="container content-detail-page">
     <div class="song">
-        <h1>{{ song.title }}</h1>
+        <div class="detail-heading">
+            <h1>{{ song.title }}</h1>
+            {% if song in favorite_songs %}
+            <span onclick="remove_fav('{{ song.slug }}')" class='fav-detail-btn'><i class="fas fa-bookmark fa-2x"></i></span>
+            {% else %}
+            <span onclick="add_fav('{{ song.slug }}')" class='fav-detail-btn'><i class="far fa-bookmark fa-2x"></i></span>
+            {% endif %}
+        </div><br>
         <h4>{{ song.author }}</h4>
         <p>{{ song.duration }}</p>
         <p>{{ song.release_date }}</p>
@@ -19,4 +26,34 @@
     </div>
     <a href="/music" class="btn btn-primary">Back</a>
 </div>
+
+<script type="text/javascript">
+    function remove_fav(slug){
+        remove_url = '/mypixs/remove/Song/' + slug
+        $.ajax({
+            type: "POST",
+            url: remove_url,
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(){
+                location.reload()
+            }
+        })
+    }
+
+    function add_fav(slug){
+        add_url = '/mypixs/add/Song/' + slug
+        $.ajax({
+            type: "POST",
+            url: add_url,
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(){
+                location.reload() 
+            }
+        })
+    }
+</script> 
 {% endblock %}

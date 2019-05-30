@@ -14,6 +14,8 @@ from .forms import MusicForm, MovieForm, PodcastForm
 # Import filters
 from .filters import MovieFilter
 
+from django.apps import apps
+
 # Views.
 def index(request):
     return render(request, 'index.html')
@@ -47,19 +49,13 @@ def movie_upload(request):
 @login_required(login_url="/accounts/login")
 def movie_detail(request, slug):
     movie = Movie.objects.get(slug=slug)
-    
-    return render(request, 'movies/movie_detail.html', {'movie': movie})
-
-'''
-@login_required(login_url="/accounts/login")
-def favourite_movie(request, slug):
-    movie = Movie.objects.get(slug=slug)
-    if movie.favourite.filter(id=request.user.id).exists():
-        movie.favourite.remove(request.user)
-    else:
-        movie.favourite.add(request.user)
-    return render(request, 'movies/movie_detail.html', {'movie': movie})
-'''
+    favorite = Favorite.objects.get(current_user=request.user)
+    favorite_movies = favorite.movies.all()
+    args = {
+        'movie': movie,
+        'favorite_movies': favorite_movies
+    }
+    return render(request, 'movies/movie_detail.html', args)
 
 # Music
 @login_required(login_url="/accounts/login")
@@ -81,7 +77,13 @@ def music_upload(request):
 @login_required(login_url="/accounts/login")
 def music_detail(request, slug):
     song = Song.objects.get(slug=slug)
-    return render(request, 'music/music_detail.html', {'song': song})
+    favorite = Favorite.objects.get(current_user=request.user)
+    favorite_songs = favorite.songs.all()
+    args = {
+        'song': song,
+        'favorite_songs': favorite_songs
+    }
+    return render(request, 'music/music_detail.html', args)
 
 # Podcasts
 @login_required(login_url="/accounts/login")
@@ -103,7 +105,13 @@ def podcast_upload(request):
 @login_required(login_url="/accounts/login")
 def podcast_detail(request, slug):
     podcast = Podcast.objects.get(slug=slug)
-    return render(request, 'podcasts/podcast_detail.html', {'podcast': podcast})
+    favorite = Favorite.objects.get(current_user=request.user)
+    favorite_podcasts = favorite.podcasts.all()
+    args = {
+        'podcast': podcast,
+        'favorite_podcasts': favorite_podcasts
+    }
+    return render(request, 'podcasts/podcast_detail.html', args)
 
 # Favorites
 @login_required(login_url='/accounts/login')
@@ -126,10 +134,12 @@ def favorites(request):
 
 @login_required(login_url="/accounts/login")
 def change_favorite(request, operation, content_type, slug):
-    new_favorite = content_type.objects.get(slug=slug)
+    model = apps.get_model('streaming_platform', content_type)
+    new_favorite = model.objects.get(slug=slug)
     if operation == 'add':
         Favorite.make_favorite(request.user, new_favorite)
+        
     elif operation == 'remove':
         Favorite.delete_favorite(request.user, new_favorite)
-
+        
     return render(request, 'index.html')

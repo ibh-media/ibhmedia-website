@@ -13,7 +13,6 @@ urlpatterns = [
     url(r'^movies/movie_upload/$', views.movie_upload, name='movie_upload'),
     url(r'^movies/filter/$', views.movies, name='movies'),
     url(r'^movies/(?P<slug>[\w-]+)/$', views.movie_detail, name='movie_detail'),
-    #url(r'^movies/(?P<slug>[\w-]+)/favourite/$', views.favourite_movie, name='favourite_movie'),
     url(r'^music/$', views.songs, name='songs'),
     url(r'^music/music_upload/$', views.music_upload, name='music_upload'),
     url(r'^music/(?P<slug>[\w-]+)/$', views.music_detail, name='music_detail'),

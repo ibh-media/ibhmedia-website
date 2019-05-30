@@ -13,7 +13,7 @@
         {% if favorite_movies %}
         <div class="row">
             {% for movie in favorite_movies %}
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="movie-img">
                     <a onclick="show_hideDiv('{{ movie.title }}')">
                         <img class="thumbnail img-responsive rounded" src="{{ movie.thumbnail.url }}" ,
@@ -37,7 +37,7 @@
                         <h4>{{ movie.title }}</h4>
                         <p>{{ movie.director }}</p>
                         <p>{{ movie.summary }}</p>
-                        <p><a href="{{ movie.slug }}"><button class="btn btn-orange play-button"
+                        <p><a href="/movies/{{ movie.slug }}"><button class="btn btn-orange play-button"
                                 style="color: white;"><i class="fa fa-play fa-sm"></i> <b>Watch</b></button></a></p>
                         <p><b>Genres: </b>{{ movie.genres }}</p>
                         <p><b>Production: </b>{{ movie.production }}</p>
@@ -58,11 +58,11 @@
         {% if favorite_songs %}
         <div class="row">
             {% for song in favorite_songs %}
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <img src="{{ song.thumbnail.url }}" class="thumbnail-2">
                     <div class="card-body">
-                        <a href="{{ song.slug }}" class="stretched-link">
+                        <a href="/music/{{ song.slug }}" class="stretched-link">
                             <h5 class="card-title">{{ song.title }}</h5>
                         </a>
                         <h6 class="card-subtitle mb-2 text-muted">{{ song.author }}</h6>
@@ -86,11 +86,11 @@
         {% if favorite_podcasts %}
         <div class="row">
             {% for podcast in favorite_podcasts %}
-            <div class="col-md-3">
+            <div class="col-md-2">
             <div class="card">
                 <img src="{{ podcast.thumbnail.url }}" class="thumbnail-2">
                 <div class="card-body">
-                    <a href="{{ podcast.slug }}" class="stretched-link">
+                    <a href="/podcasts/{{ podcast.slug }}" class="stretched-link">
                         <h5 class="card-title">{{ podcast.title }}</h5>
                     </a>
                     <h6 class="card-subtitle mb-2 text-muted">{{ podcast.author }}</h6>
