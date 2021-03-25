@@ -19,7 +19,7 @@ pypiwin32==219
 python-dateutil==2.8.0
 python-openid==2.2.5
 pytz==2018.9
-PyYAML==3.13
+PyYAML==5.4
 requests==2.20.1
 requests-oauthlib==1.2.0
 semantic-version==2.5.0
